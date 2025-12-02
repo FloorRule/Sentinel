@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS logs(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    timestamp TEXT NOT NULL,
+    service TEXT NOT NULL,
+    level TEXT NOT NULL,
+    message TEXT NOT NULL,
+    is_threat BOOLEAN DEFAULT FALSE
+);
