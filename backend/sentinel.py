@@ -41,3 +41,16 @@ def insert_log(log: dict):
 
     conn.commit()
     conn.close()
+
+def get_recent_logs():
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 50")
+    rows = cursor.fetchall()
+
+    columns = [col[0] for col in cursor.description]
+    result = [dict(zip(columns, row)) for row in rows]
+
+    conn.close()
+    return result
