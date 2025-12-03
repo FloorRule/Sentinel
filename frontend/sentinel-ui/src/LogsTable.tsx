@@ -8,27 +8,10 @@ import {
 } from "./components/ui/table"
 import { Badge } from "./components/ui/badge"
 import { ScrollArea } from "./components/ui/scroll-area"
+import type { Log } from "./types"
 
-// Log
-type Log = {
-  id: string
-  timestamp: string
-  level: "INFO" | "WARNING" | "ERROR" | "CRITICAL"
-  service: string
-  message: string
-  statusCode: number
-}
 
-// Mock Data 
-const logs: Log[] = [
-  { id: "1", timestamp: "2023-10-25 10:23:45", level: "ERROR", service: "auth-service", message: "Invalid password attempt for user admin", statusCode: 401 },
-  { id: "2", timestamp: "2023-10-25 10:23:42", level: "INFO", service: "payment-api", message: "Transaction verified successfully", statusCode: 200 },
-  { id: "3", timestamp: "2023-10-25 10:23:40", level: "CRITICAL", service: "database", message: "Connection timeout at 192.168.1.5", statusCode: 500 },
-  { id: "4", timestamp: "2023-10-25 10:23:35", level: "WARNING", service: "rate-limiter", message: "Rate limit approached for IP 10.0.0.1", statusCode: 429 },
-  { id: "5", timestamp: "2023-10-25 10:23:30", level: "INFO", service: "frontend", message: "Page load complete: /dashboard", statusCode: 200 },
-]
-
-export function LogsTable() {
+export function LogsTable({ logs }: { logs: Log[] }) {
   return (
     <ScrollArea className="h-[400px] w-full rounded-md border">
       <Table>
@@ -47,7 +30,7 @@ export function LogsTable() {
               
               {/* Timestamp */}
               <TableCell className="font-mono text-xs text-muted-foreground">
-                {log.timestamp.split(" ")[1]} 
+                {new Date(log.timestamp).toLocaleTimeString()}
               </TableCell>
 
               {/* Status Badge */}
