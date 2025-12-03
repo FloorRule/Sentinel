@@ -1,11 +1,12 @@
 import { Chart } from "./Chart"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card"
+import { LogsTable } from "./LogsTable"
 
 export function DashboardContent() {
   return (
     <div className="flex flex-col space-y-6">
       
-      {/* SECTION A: KPI CARDS (Don't skip these - they make you look Senior) */}
+      {/* SECTION A: KPI CARDS */}
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -41,7 +42,6 @@ export function DashboardContent() {
             <CardDescription>Requests per second over the last 30 minutes</CardDescription>
           </CardHeader>
           <CardContent className="pl-2">
-            {/* The Recharts component goes here, set height to h-[350px] <OverviewChart /> <LogsTable />*/}
             <Chart />
           </CardContent>
         </Card>
@@ -55,7 +55,7 @@ export function DashboardContent() {
                 <CardDescription>Live incoming stream from Redis</CardDescription>
             </CardHeader>
             <CardContent>
-                
+                <LogsTable />
             </CardContent>
         </Card>
       </div>
