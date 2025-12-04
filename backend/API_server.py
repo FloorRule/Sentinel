@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from sentinel import get_recent_logs, run_sentinel
+from sentinel import get_recent_logs, run_sentinel, get_stats, get_charts_data
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -30,3 +30,10 @@ def logAnalysis(log: LogEntry):
 def getLogAnalysis():
     return {"status": "ok", "result": get_recent_logs()}
 
+@app.get("/api/stats")
+def getStats():
+    return {"status": "ok", "result": get_stats()}
+
+@app.get("/api/chart-data")
+def getChartData():
+    return {"status": "ok", "result": get_charts_data()}
