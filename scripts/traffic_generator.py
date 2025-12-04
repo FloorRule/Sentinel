@@ -1,3 +1,4 @@
+import sys
 import requests
 import time
 import random
@@ -39,10 +40,13 @@ def generate_log(is_attack=False):
     }
 
 def main():
+    if len(sys.argv) <= 1:
+        return
+    
     print(f" Traffic Generator started. Target: {API_URL}")
     while True:
         # 10% chance of a "burst" attack
-        if random.random() < 0.1:
+        if random.random() < 0.1 and sys.argv[1] == "Attack":
             print("  SIMULATING ATTACK BURST!")
             for _ in range(20):
                 log = generate_log(is_attack=True)

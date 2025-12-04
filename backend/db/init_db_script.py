@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_PATH = "sentinel2.db"
+DB_PATH = "sentinel3.db"
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS logs (
