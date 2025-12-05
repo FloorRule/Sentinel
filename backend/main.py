@@ -6,7 +6,7 @@ from db.init_db_script import init_db
 
 def start_fastapi():
     init_db()
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 
 # Start threads
 threading.Thread(target=start_fastapi, daemon=True).start()
