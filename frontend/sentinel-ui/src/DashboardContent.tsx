@@ -94,7 +94,7 @@ export function DashboardContent() {
         <Card>
           <CardHeader>
               <CardTitle>Recent Logs</CardTitle>
-              <CardDescription>Live incoming stream from Redis</CardDescription>
+              <CardDescription>Streaming events from ingestion pipeline</CardDescription>
           </CardHeader>
           <CardContent>
               <LogsTable logs={logs}/>

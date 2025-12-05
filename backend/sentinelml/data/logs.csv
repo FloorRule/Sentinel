@@ -1,0 +1,32 @@
+timestamp,service,level,message
+2025-12-04T07:13:34.754587,frontend-ui,INFO,User action processed successfully
+2025-12-04T07:13:42.378087,payment-api,INFO,User action processed successfully
+2025-12-04T07:13:48.064587,auth-service,INFO,User action processed successfully
+2025-12-04T07:13:52.412089,auth-service,INFO,User action processed successfully
+2025-12-04T07:13:58.017090,payment-api,INFO,User action processed successfully
+2025-12-04T07:14:02.824589,auth-service,WARNING,Suspicious activity detected from IP 172.170.38.224
+2025-12-04T07:14:05.821087,database-worker,WARNING,Suspicious activity detected from IP 131.207.236.241
+2025-12-04T07:14:10.566088,payment-api,ERROR,Suspicious activity detected from IP 138.95.120.22
+2025-12-04T07:14:15.321087,payment-api,WARNING,Suspicious activity detected from IP 150.118.216.112
+2025-12-04T07:14:20.021087,database-worker,WARNING,Suspicious activity detected from IP 243.204.36.111
+2025-12-04T07:14:24.816589,frontend-ui,ERROR,Suspicious activity detected from IP 200.103.120.144
+2025-12-04T07:14:29.976587,payment-api,WARNING,Suspicious activity detected from IP 245.179.132.95
+2025-12-04T07:14:34.698588,payment-api,ERROR,Suspicious activity detected from IP 215.15.20.218
+2025-12-04T07:14:39.398587,frontend-ui,ERROR,Suspicious activity detected from IP 122.79.236.119
+2025-12-04T07:14:44.183090,auth-service,ERROR,Suspicious activity detected from IP 118.156.52.58
+2025-12-04T07:14:48.976087,payment-api,ERROR,Suspicious activity detected from IP 251.248.165.105
+2025-12-04T07:14:53.732087,payment-api,WARNING,Suspicious activity detected from IP 220.227.18.51
+2025-12-04T07:14:58.472087,payment-api,WARNING,Suspicious activity detected from IP 228.217.16.152
+2025-12-04T07:15:01.342586,payment-api,WARNING,Suspicious activity detected from IP 235.33.85.237
+2025-12-04T07:15:03.787087,database-worker,ERROR,Suspicious activity detected from IP 221.31.158.202
+2025-12-04T07:15:06.242087,database-worker,WARNING,Suspicious activity detected from IP 176.2.25.77
+2025-12-04T07:15:08.686587,database-worker,ERROR,Suspicious activity detected from IP 157.29.203.108
+2025-12-04T07:15:11.164588,payment-api,WARNING,Suspicious activity detected from IP 193.71.37.132
+2025-12-04T07:15:13.594587,payment-api,ERROR,Suspicious activity detected from IP 191.202.65.34
+2025-12-04T07:15:16.886587,frontend-ui,ERROR,Suspicious activity detected from IP 228.48.166.41
+2025-12-04T07:15:19.320087,database-worker,INFO,User action processed successfully
+2025-12-04T07:15:22.840087,payment-api,INFO,User action processed successfully
+2025-12-04T07:15:27.813587,frontend-ui,INFO,User action processed successfully
+2025-12-04T07:15:32.938087,database-worker,INFO,User action processed successfully
+2025-12-04T07:15:37.233088,database-worker,INFO,User action processed successfully
+2025-12-04T07:15:41.155088,frontend-ui,INFO,User action processed successfully

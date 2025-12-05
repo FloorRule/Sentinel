@@ -1,7 +1,9 @@
-
 from math import floor
 from pydantic import BaseModel
 from db.init_db_script import get_connection
+from sentinelml.ml.model import IsolationForestDetector
+
+detector = IsolationForestDetector()
 
 class LogProccedEntry(BaseModel):
     timestamp: str
@@ -13,6 +15,8 @@ class LogProccedEntry(BaseModel):
 def run_sentinel(log):
     print("Processing:", log)
     is_threating = (log["level"] == "ERROR" or log["message"].find("SQL Injection") != -1);
+    #prediction = detector.predict_log(log)
+    #is_threating = prediction["is_anomaly"]
 
     entry = LogProccedEntry(
         timestamp=log["timestamp"],
@@ -67,8 +71,10 @@ def get_stats():
 
     cursor.execute("SELECT COUNT(*) FROM logs WHERE is_threat==true")
     threats_detected = cursor.fetchall()[0][0]
-
-    error_rate = floor((threats_detected/total_vol)*100)
+    if total_vol == 0:
+        error_rate = 0
+    else:
+        error_rate = floor((threats_detected/total_vol)*100)
 
     result_dict = {"total_vol":total_vol, "threats_detected":threats_detected, "error_rate": error_rate}
     conn.close()
