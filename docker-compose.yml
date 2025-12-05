@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+
+  backend:
+    build: ./backend
+    container_name: sentinel_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - ./data:/data           # SQLite location
+    environment:
+      DATABASE_PATH: "/data/sentinel3.db"
+
+  frontend:
+    build: ./frontend/sentinel-ui
+    container_name: sentinel_frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+  traffic:
+    build: ./scripts
+    container_name: sentinel_traffic
+    depends_on:
+      - backend
+    environment:
+      API_URL: "http://backend:8000/api/logs"
+
+volumes:
+  sqlite_data:

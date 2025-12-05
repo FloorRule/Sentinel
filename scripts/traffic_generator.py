@@ -1,3 +1,4 @@
+import os
 import sys
 import requests
 import time
@@ -6,7 +7,7 @@ import json
 from datetime import datetime
 
 # CONFIG
-API_URL = "http://localhost:8000/api/logs"
+API_URL = os.getenv("API_URL","http://backend:8000/api/logs")
 SERVICES = ["auth-service", "payment-api", "frontend-ui", "database-worker"]
 NORMAL_Endpoints = ["/login", "/home", "/products", "/checkout", "/user/profile"]
 ATTACK_PAYLOADS = [
