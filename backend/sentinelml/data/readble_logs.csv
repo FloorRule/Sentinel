@@ -1,0 +1,139 @@
+timestamp,service,level,message,is_threat
+2025-12-06T21:57:54.794035,payment-api,INFO,Page load complete,0
+2025-12-06T21:57:56.825952,frontend-ui,INFO,Page load complete,0
+2025-12-06T21:57:57.557220,database-worker,INFO,Page load complete,0
+2025-12-06T21:58:00.498655,frontend-ui,INFO,Database sync finished,0
+2025-12-06T21:58:02.307338,frontend-ui,INFO,Page load complete,0
+2025-12-06T21:58:04.319595,payment-api,INFO,Health check OK,0
+2025-12-06T21:58:06.507411,database-worker,INFO,Payment verified,0
+2025-12-06T21:58:08.603893,frontend-ui,INFO,Page load complete,0
+2025-12-06T21:58:09.485407,database-worker,INFO,Database sync finished,0
+2025-12-06T21:58:10.820075,database-worker,INFO,User logout success,0
+2025-12-06T21:58:12.938087,database-worker,INFO,Session refreshed,0
+2025-12-06T21:58:14.703842,payment-api,INFO,User logout success,0
+2025-12-06T21:58:16.609500,auth-service,INFO,Payment verified,0
+2025-12-06T21:58:17.880530,auth-service,INFO,User logout success,0
+2025-12-06T21:58:20.947776,auth-service,INFO,Database sync finished,0
+2025-12-06T21:58:23.241913,database-worker,INFO,User action processed successfully,1
+2025-12-06T21:58:25.735121,frontend-ui,INFO,User logout success,0
+2025-12-06T21:58:28.289858,payment-api,INFO,Database sync finished,0
+2025-12-06T21:58:31.948405,payment-api,INFO,User logout success,0
+2025-12-06T21:58:34.235621,frontend-ui,INFO,Session refreshed,0
+2025-12-06T21:58:35.831140,frontend-ui,INFO,Health check OK,0
+2025-12-06T21:58:38.208475,database-worker,INFO,Health check OK,0
+2025-12-06T21:58:41.422519,database-worker,INFO,Database sync finished,0
+2025-12-06T21:58:43.941347,frontend-ui,INFO,Session refreshed,0
+2025-12-06T21:58:46.814870,database-worker,INFO,User action processed successfully,1
+2025-12-06T21:58:48.339469,payment-api,INFO,Session refreshed,0
+2025-12-06T21:58:51.075156,database-worker,INFO,User logout success,0
+2025-12-06T21:58:53.890628,payment-api,INFO,Session refreshed,0
+2025-12-06T21:58:56.320699,frontend-ui,INFO,User logout success,0
+2025-12-06T21:58:59.178750,auth-service,INFO,User action processed successfully,0
+2025-12-06T21:59:02.145052,payment-api,WARNING,Suspicious activity detected from IP 129.92.119.210,0
+2025-12-06T21:59:03.524078,auth-service,ERROR,Suspicious activity detected from IP 139.222.23.182,0
+2025-12-06T21:59:03.808773,frontend-ui,WARNING,Suspicious activity detected from IP 191.143.113.66,0
+2025-12-06T21:59:04.109806,database-worker,WARNING,Suspicious activity detected from IP 207.51.213.252,1
+2025-12-06T21:59:04.420347,frontend-ui,ERROR,Suspicious activity detected from IP 112.18.102.105,0
+2025-12-06T21:59:04.704529,frontend-ui,WARNING,Suspicious activity detected from IP 218.231.254.61,0
+2025-12-06T21:59:05.002168,frontend-ui,ERROR,Suspicious activity detected from IP 119.100.152.101,0
+2025-12-06T21:59:05.294595,frontend-ui,ERROR,Suspicious activity detected from IP 231.238.252.9,0
+2025-12-06T21:59:05.574405,payment-api,WARNING,Suspicious activity detected from IP 155.130.102.90,0
+2025-12-06T21:59:05.866324,payment-api,WARNING,Suspicious activity detected from IP 201.101.242.234,0
+2025-12-06T21:59:06.146780,frontend-ui,ERROR,Suspicious activity detected from IP 216.146.38.1,0
+2025-12-06T21:59:06.438582,payment-api,ERROR,Suspicious activity detected from IP 193.120.134.128,0
+2025-12-06T21:59:06.725328,frontend-ui,WARNING,Suspicious activity detected from IP 170.84.235.120,0
+2025-12-06T21:59:06.995669,frontend-ui,ERROR,Suspicious activity detected from IP 182.84.49.69,0
+2025-12-06T21:59:07.275513,frontend-ui,ERROR,Suspicious activity detected from IP 189.11.64.14,0
+2025-12-06T21:59:07.553547,database-worker,WARNING,Suspicious activity detected from IP 219.147.217.242,1
+2025-12-06T21:59:07.843727,payment-api,ERROR,Suspicious activity detected from IP 147.63.133.176,0
+2025-12-06T21:59:08.135654,frontend-ui,WARNING,Suspicious activity detected from IP 188.64.224.209,0
+2025-12-06T21:59:08.451094,database-worker,WARNING,Suspicious activity detected from IP 188.63.147.29,1
+2025-12-06T21:59:08.770708,database-worker,ERROR,Suspicious activity detected from IP 159.41.251.161,1
+2025-12-06T21:59:09.082959,payment-api,INFO,Page load complete,0
+2025-12-06T21:59:10.991425,database-worker,INFO,Database sync finished,0
+2025-12-06T21:59:12.373647,frontend-ui,INFO,Health check OK,0
+2025-12-06T21:59:15.615095,auth-service,INFO,Page load complete,0
+2025-12-06T21:59:18.232938,database-worker,INFO,Database sync finished,0
+2025-12-06T21:59:20.707781,payment-api,INFO,User action processed successfully,0
+2025-12-06T21:59:22.263523,frontend-ui,INFO,Health check OK,0
+2025-12-06T21:59:25.026949,frontend-ui,WARNING,Suspicious activity detected from IP 120.124.117.186,0
+2025-12-06T21:59:26.294715,database-worker,ERROR,Suspicious activity detected from IP 191.236.146.181,1
+2025-12-06T21:59:26.605238,payment-api,ERROR,Suspicious activity detected from IP 125.245.17.215,0
+2025-12-06T21:59:26.895844,database-worker,WARNING,Suspicious activity detected from IP 144.36.207.184,1
+2025-12-06T21:59:27.204593,payment-api,WARNING,Suspicious activity detected from IP 245.67.183.145,0
+2025-12-06T21:59:27.521167,frontend-ui,ERROR,Suspicious activity detected from IP 173.189.127.89,0
+2025-12-06T21:59:27.814011,payment-api,WARNING,Suspicious activity detected from IP 244.222.145.10,0
+2025-12-06T21:59:28.134610,auth-service,WARNING,Suspicious activity detected from IP 229.63.236.99,0
+2025-12-06T21:59:28.434661,frontend-ui,ERROR,Suspicious activity detected from IP 201.208.233.112,0
+2025-12-06T21:59:28.748270,database-worker,WARNING,Suspicious activity detected from IP 109.218.38.237,1
+2025-12-06T21:59:29.047099,auth-service,WARNING,Suspicious activity detected from IP 142.53.31.7,0
+2025-12-06T21:59:29.338959,payment-api,ERROR,Suspicious activity detected from IP 199.151.208.207,0
+2025-12-06T21:59:29.652115,payment-api,WARNING,Suspicious activity detected from IP 112.169.42.171,0
+2025-12-06T21:59:29.961573,auth-service,ERROR,Suspicious activity detected from IP 243.180.127.24,0
+2025-12-06T21:59:30.265132,database-worker,WARNING,Suspicious activity detected from IP 201.83.116.68,1
+2025-12-06T21:59:30.584105,frontend-ui,ERROR,Suspicious activity detected from IP 235.2.121.58,0
+2025-12-06T21:59:30.889960,auth-service,ERROR,Suspicious activity detected from IP 142.73.197.119,0
+2025-12-06T21:59:31.208918,payment-api,ERROR,Suspicious activity detected from IP 199.125.182.220,0
+2025-12-06T21:59:31.513861,database-worker,ERROR,Suspicious activity detected from IP 253.175.151.142,1
+2025-12-06T21:59:32.810426,database-worker,ERROR,Suspicious activity detected from IP 178.27.62.152,1
+2025-12-06T21:59:33.126643,payment-api,INFO,User logout success,0
+2025-12-06T21:59:34.487219,database-worker,INFO,Page load complete,0
+2025-12-06T21:59:37.536806,payment-api,INFO,Payment verified,0
+2025-12-06T21:59:39.002364,payment-api,INFO,Database sync finished,0
+2025-12-06T21:59:41.916973,frontend-ui,INFO,Session refreshed,0
+2025-12-06T21:59:44.742255,auth-service,INFO,Page load complete,0
+2025-12-06T21:59:46.655771,database-worker,INFO,Health check OK,0
+2025-12-06T21:59:48.556211,auth-service,INFO,Health check OK,0
+2025-12-06T21:59:50.775150,frontend-ui,INFO,Page load complete,0
+2025-12-06T21:59:54.404748,payment-api,INFO,Health check OK,0
+2025-12-06T21:59:56.599549,auth-service,INFO,Database sync finished,0
+2025-12-06T21:59:58.103846,auth-service,INFO,Health check OK,0
+2025-12-06T22:00:00.624813,frontend-ui,INFO,Session refreshed,0
+2025-12-06T22:00:04.005622,frontend-ui,WARNING,Suspicious activity detected from IP 104.1.225.91,0
+2025-12-06T22:00:05.734032,payment-api,WARNING,Suspicious activity detected from IP 158.35.1.59,0
+2025-12-06T22:00:06.026511,payment-api,ERROR,Suspicious activity detected from IP 222.238.226.152,0
+2025-12-06T22:00:06.328616,payment-api,WARNING,Suspicious activity detected from IP 176.77.20.93,0
+2025-12-06T22:00:06.627489,database-worker,ERROR,Suspicious activity detected from IP 216.190.208.5,1
+2025-12-06T22:00:06.929416,database-worker,WARNING,Suspicious activity detected from IP 122.189.31.76,1
+2025-12-06T22:00:07.219734,frontend-ui,WARNING,Suspicious activity detected from IP 198.68.32.243,0
+2025-12-06T22:00:07.510669,frontend-ui,ERROR,Suspicious activity detected from IP 179.220.171.145,0
+2025-12-06T22:00:07.800392,auth-service,ERROR,Suspicious activity detected from IP 215.93.21.94,0
+2025-12-06T22:00:08.122460,payment-api,ERROR,Suspicious activity detected from IP 112.25.141.175,0
+2025-12-06T22:00:08.476992,frontend-ui,ERROR,Suspicious activity detected from IP 197.127.199.177,0
+2025-12-06T22:00:08.787781,frontend-ui,WARNING,Suspicious activity detected from IP 230.63.71.107,0
+2025-12-06T22:00:09.102078,database-worker,ERROR,Suspicious activity detected from IP 228.116.194.170,1
+2025-12-06T22:00:09.426203,frontend-ui,WARNING,Suspicious activity detected from IP 142.103.4.9,0
+2025-12-06T22:00:09.738014,auth-service,ERROR,Suspicious activity detected from IP 153.189.27.225,0
+2025-12-06T22:00:10.060687,frontend-ui,WARNING,Suspicious activity detected from IP 180.97.218.82,0
+2025-12-06T22:00:10.362540,frontend-ui,WARNING,Suspicious activity detected from IP 158.136.211.95,0
+2025-12-06T22:00:10.681865,frontend-ui,WARNING,Suspicious activity detected from IP 132.126.10.52,0
+2025-12-06T22:00:10.994735,database-worker,WARNING,Suspicious activity detected from IP 206.32.160.221,1
+2025-12-06T22:00:11.288249,auth-service,ERROR,Suspicious activity detected from IP 162.151.183.46,0
+2025-12-06T22:00:11.575731,database-worker,INFO,Database sync finished,0
+2025-12-06T22:00:13.283386,frontend-ui,ERROR,Suspicious activity detected from IP 224.198.152.6,0
+2025-12-06T22:00:14.252788,auth-service,WARNING,Suspicious activity detected from IP 233.90.67.27,0
+2025-12-06T22:00:14.564158,auth-service,WARNING,Suspicious activity detected from IP 114.180.221.192,0
+2025-12-06T22:00:14.864408,payment-api,WARNING,Suspicious activity detected from IP 222.36.232.231,0
+2025-12-06T22:00:15.167446,database-worker,WARNING,Suspicious activity detected from IP 219.1.32.57,1
+2025-12-06T22:00:15.454124,payment-api,ERROR,Suspicious activity detected from IP 209.68.23.214,0
+2025-12-06T22:00:15.753152,auth-service,WARNING,Suspicious activity detected from IP 124.149.33.120,0
+2025-12-06T22:00:16.056916,frontend-ui,ERROR,Suspicious activity detected from IP 124.153.95.63,0
+2025-12-06T22:00:16.345580,database-worker,WARNING,Suspicious activity detected from IP 102.4.53.34,1
+2025-12-06T22:00:16.646157,database-worker,WARNING,Suspicious activity detected from IP 151.222.183.173,1
+2025-12-06T22:00:16.934692,database-worker,ERROR,Suspicious activity detected from IP 244.247.179.253,1
+2025-12-06T22:00:17.246695,database-worker,WARNING,Suspicious activity detected from IP 136.140.202.56,1
+2025-12-06T22:00:17.567139,auth-service,ERROR,Suspicious activity detected from IP 203.23.70.14,0
+2025-12-06T22:00:17.845547,database-worker,ERROR,Suspicious activity detected from IP 135.122.225.194,1
+2025-12-06T22:00:20.458735,database-worker,WARNING,Suspicious activity detected from IP 137.198.94.78,1
+2025-12-06T22:00:20.763279,payment-api,WARNING,Suspicious activity detected from IP 241.244.168.180,0
+2025-12-06T22:00:21.065352,database-worker,ERROR,Suspicious activity detected from IP 209.150.68.77,1
+2025-12-06T22:00:23.591482,payment-api,WARNING,Suspicious activity detected from IP 229.182.134.22,0
+2025-12-06T22:00:23.929694,database-worker,WARNING,Suspicious activity detected from IP 194.74.165.56,1
+2025-12-06T22:00:24.285982,auth-service,ERROR,Suspicious activity detected from IP 137.121.148.180,0
+2025-12-06T22:00:26.806497,payment-api,INFO,Database sync finished,0
+2025-12-06T22:00:28.668781,frontend-ui,INFO,User logout success,0
+2025-12-06T22:00:33.476974,payment-api,INFO,User action processed successfully,0
+2025-12-06T22:00:38.935475,database-worker,INFO,Payment verified,0
+2025-12-06T22:00:43.018634,database-worker,INFO,Page load complete,0
+2025-12-06T22:00:47.882139,payment-api,INFO,User action processed successfully,0
+2025-12-06T22:00:52.521772,auth-service,INFO,User logout success,0

@@ -26,7 +26,7 @@ export function LogsTable({ logs }: { logs: Log[] }) {
         </TableHeader>
         <TableBody>
           {logs.map((log) => (
-            <TableRow key={log.id}>
+            <TableRow key={log.timestamp + log.service + log.level}>
               
               {/* Timestamp */}
               <TableCell className="font-mono text-xs text-muted-foreground">

@@ -17,6 +17,16 @@ ATTACK_PAYLOADS = [
     "/cgi-bin/php?cmd=ls"
 ]
 
+NORMAL_MESSAGES = [
+    "User action processed",
+    "Payment verified",
+    "Page load complete",
+    "Database sync finished",
+    "User logout success",
+    "Session refreshed",
+    "Health check OK"
+]
+
 def generate_log(is_attack=False):
     service = random.choice(SERVICES)
     
@@ -29,7 +39,7 @@ def generate_log(is_attack=False):
         level = "INFO"
         status = random.choice([200, 201, 304])
         endpoint = random.choice(NORMAL_Endpoints)
-        msg = f"User action processed successfully"
+        msg = random.choice(NORMAL_MESSAGES)
 
     return {
         "timestamp": datetime.utcnow().isoformat(),
