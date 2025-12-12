@@ -8,10 +8,5 @@ def start_fastapi():
     init_db()
     uvicorn.run(app, host="0.0.0.0", port=8000)
 
-# Start threads
-threading.Thread(target=start_fastapi, daemon=True).start()
-
 print("Sentinel + FastAPI are running...")
-
-while True:
-    time.sleep(1)
+start_fastapi()

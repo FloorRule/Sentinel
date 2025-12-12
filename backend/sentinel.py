@@ -2,6 +2,7 @@ from math import floor
 from pydantic import BaseModel
 from db.init_db_script import get_connection
 from sentinelml.ml.model import IsolationForestDetector
+from wsManage import broadcast
 
 detector = IsolationForestDetector()
 
@@ -12,11 +13,12 @@ class LogProccedEntry(BaseModel):
     message: str
     is_threat: bool
 
-def run_sentinel(log):
+async def run_sentinel(log):
     print("Processing:", log)
-    is_threating = (log["level"] == "ERROR" or log["message"].find("SQL Injection") != -1);
-    #prediction = detector.predict_log(log)
-    #is_threating = prediction["is_anomaly"]
+    #is_threating = (log["level"] == "ERROR" or log["message"].find("SQL Injection") != -1);
+    prediction = detector.predict_log(log)
+    print(prediction["score"])
+    is_threating = prediction["is_anomaly"]
 
     entry = LogProccedEntry(
         timestamp=log["timestamp"],
@@ -27,6 +29,9 @@ def run_sentinel(log):
     )
     insert_log(entry.model_dump())
 
+    await broadcast("logs", entry.model_dump())
+    await broadcast("stats", get_stats())
+    await broadcast("chart-data", get_charts_data())
     return "done"
 
 def insert_log(log: dict):

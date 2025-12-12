@@ -2,7 +2,7 @@ import { Chart } from "./Chart"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card"
 import { LogsTable } from "./LogsTable"
 import type { DashboardStats,Log,ChartPoint } from "./types"
-import { useEffect, useState } from "react"
+import { useEffect,useState } from "react"
 
 const INIT_STATS = { total_vol: 0, threats_detected: 0, error_rate: 0 }
 
@@ -12,34 +12,26 @@ export function DashboardContent() {
   const [stats, setStats] = useState<DashboardStats>(INIT_STATS)
 
 
-  const fetchData = async () => {
-    try {
-        
-        // Fetch recent logs
-        const logsRes = await fetch("http://localhost:8000/api/logs")
-        const logsJson = await logsRes.json()
-        setLogs(logsJson.result)
-
-        // Fetch Stats
-        const statsRes = await fetch("http://localhost:8000/api/stats")
-        const statsJson = await statsRes.json()
-        setStats(statsJson.result)
-
-        // Fetch Chart Data
-        const chartRes = await fetch("http://localhost:8000/api/chart-data")
-        const chartJson = await chartRes.json()
-        setChartData(chartJson.result)
-
-    } catch (error) {
-        console.error("Failed to fetch dashboard data:", error)
-    }
-  }
-
   useEffect(() => {
-    fetchData()
-    const interval = setInterval(fetchData, 2000) // Poll every 2 seconds
-    return () => clearInterval(interval) // Cleanup
-  }, [])
+    const ws = new WebSocket("ws://localhost:8000/ws/dashboard");
+
+    ws.onmessage = (event) => {
+      const msg = JSON.parse(event.data);
+
+      if (msg.type === "logs") 
+        setLogs(prev => [msg.data, ...prev]);
+      else if (msg.type === "stats") 
+        setStats(msg.data);
+      else if (msg.type === "chart-data") 
+        setChartData(msg.data);
+    };
+
+    ws.onopen = () => console.log("WS Connected");
+    ws.onerror = (err) => console.error("WS Error:", err);
+    ws.onclose = () => console.log("WS Closed");
+
+    return () => ws.close();
+  }, []);  
 
   return (
     <div className="flex flex-col space-y-6">
