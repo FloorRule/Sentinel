@@ -1,8 +1,12 @@
-from fastapi import FastAPI, WebSocket
+import json
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from Redis.redis_client import get_redis, publish_event
 from sentinel import get_recent_logs, run_sentinel, get_stats, get_charts_data
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from wsManage import broadcast, connected_clients
+
+TEST_MODE = False
 
 app = FastAPI()
 
@@ -24,8 +28,19 @@ class LogEntry(BaseModel):
 
 @app.post("/api/logs")
 async def logAnalysis(log: LogEntry):
-    print("Received log:", log)
+    if(TEST_MODE): print("Received log:", log)
+
     result = await run_sentinel(log.model_dump())
+    stats = await get_stats()
+    charts = await get_charts_data()
+
+    update_package = {
+        "log": result,
+        "stats": stats,
+        "charts": charts
+    }
+    
+    await publish_event("dashboard_updates", update_package)
 
     return {"result": result}
 
@@ -33,11 +48,27 @@ async def logAnalysis(log: LogEntry):
 @app.websocket("/ws/dashboard")
 async def dashboard_ws(ws: WebSocket):
     await ws.accept()
-    connected_clients.append(ws)
+    redis = await get_redis()
+    pubsub = redis.pubsub()
+
+    await pubsub.subscribe("dashboard_updates")
 
     try:
-        while True:
-            await ws.receive_text()
-    except:
-        connected_clients.remove(ws)
+        async for message in pubsub.listen():
+            if message["type"] == "message":
+                #  parse Redis data
+                data = json.loads(message["data"])
+                
+                # Send Log to Frontend
+                await ws.send_json({"type": "logs", "data": data["log"]})
+                
+                # Send Stats to Frontend
+                await ws.send_json({"type": "stats", "data": data["stats"]})
 
+                # Send Charts to Frontend
+                await ws.send_json({"type": "chart-data", "data": data["charts"]})
+
+    except WebSocketDisconnect:
+        print("Client disconnected")
+    finally:
+        await pubsub.unsubscribe("dashboard_updates")
