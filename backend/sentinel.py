@@ -3,6 +3,9 @@ from pydantic import BaseModel
 from db.init_db_script import get_connection
 from sentinelml.ml.model import IsolationForestDetector
 from wsManage import broadcast
+from Redis.redis_client import cache_get, cache_set
+
+TEST_MODE = False
 
 detector = IsolationForestDetector()
 
@@ -14,10 +17,11 @@ class LogProccedEntry(BaseModel):
     is_threat: bool
 
 async def run_sentinel(log):
-    print("Processing:", log)
+    if(TEST_MODE): print("Processing:", log)
     #is_threating = (log["level"] == "ERROR" or log["message"].find("SQL Injection") != -1);
     prediction = detector.predict_log(log)
-    print(prediction["score"])
+
+    if(TEST_MODE): print(prediction["score"])
     is_threating = prediction["is_anomaly"]
 
     entry = LogProccedEntry(
@@ -29,10 +33,7 @@ async def run_sentinel(log):
     )
     insert_log(entry.model_dump())
 
-    await broadcast("logs", entry.model_dump())
-    await broadcast("stats", get_stats())
-    await broadcast("chart-data", get_charts_data())
-    return "done"
+    return entry.model_dump()
 
 def insert_log(log: dict):
     conn = get_connection()
@@ -67,7 +68,12 @@ def get_recent_logs():
     return result
 
 # api/stats
-def get_stats():
+async def get_stats():
+    # check Redis first
+    cached_stats = await cache_get("dashboard_stats")
+    if cached_stats:
+        return cached_stats
+    
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -83,10 +89,18 @@ def get_stats():
 
     result_dict = {"total_vol":total_vol, "threats_detected":threats_detected, "error_rate": error_rate}
     conn.close()
+
+    # save to Redis
+    await cache_set("dashboard_stats", result_dict, expire=2)
     return result_dict
 
 # api/chart-data
-def get_charts_data():
+async def get_charts_data():
+    # check Redis first
+    cached_charts = await cache_get("dashboard_charts")
+    if cached_charts:
+        return cached_charts
+
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -111,4 +125,6 @@ def get_charts_data():
             "success": success
         })
 
+    # save to Redis
+    await cache_set("dashboard_charts", result, expire=2)
     return result
