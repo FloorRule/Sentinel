@@ -3,7 +3,7 @@
 **Real-Time SIEM & Log Analysis Platform**
 
 ## Demo
-<video src="assets/demo.mp4" width="600" controls></video>
+<video src="assests/demo.mp4" width="600" controls></video>
 
 Sentinel is a **Cyber-SaaS dashboard** designed to visualize, analyze, and flag high-throughput server traffic in real-time. It ingests events via a high-performance Python API, queues them to prevent blocking, processes them using Machine Learning for threat detection, and streams live updates to a React client.
 
