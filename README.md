@@ -62,7 +62,7 @@ if model.predict([log_features]) == -1:
 
 The dashboard (`/frontend`) is built for data density and performance.
 
-*   **UI Library:** Shadcn/UI + Tailwind CSS for a professional, "dark mode" enterprise look.
+*   **UI Library:** Shadcn/UI + Tailwind CSS for a professional look.
 *   **State Management:** React Hooks manage the WebSocket connection state.
 *   **Visualization:** Recharts for rendering time-series data without rendering lag.
 
