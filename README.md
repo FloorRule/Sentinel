@@ -1,175 +1,141 @@
+
 # Sentinel
 
-**Real-Time SIEM & Log Analysis Platform**
+A lightweight, real-time log ingestion and threat monitoring dashboard. 
 
-Sentinel is a **Cyber-SaaS dashboard** designed to visualize, analyze, and flag high-throughput server traffic in real-time. It ingests events via a high-performance Python API, queues them to prevent blocking, processes them using Machine Learning for threat detection, and streams live updates to a React client.
+Sentinel ingests HTTP server events via an asynchronous FastAPI pipeline, runs baseline anomaly detection in the background, and streams flagged events to a React dashboard over WebSockets.
 
-https://github.com/user-attachments/assets/dea9ec61-f66b-4253-94a0-1b08c6ad3265
 
----
 
-## Overview
+https://github.com/user-attachments/assets/7da93f78-06b4-4ecf-8c12-838a6b33ea8d
 
-The system allows administrators to monitor network traffic as it happens. The architecture is decoupled into a high-speed ingestion layer and a reactive visualization layer:
 
-*   **Ingestion:** High-performance API that accepts logs without blocking.
-*   **Processing:** Asynchronous background workers analyze logs for security threats.
-*   **Storage:** Persistent storage of traffic history.
-*   **Streaming:** Sub-second data delivery to the frontend via WebSockets.
 
 ---
 
-## Features
-
-### Implemented
-
-*   **Real-Time Dashboard:** Live visualization of traffic spikes and HTTP status distributions using Recharts.
-*   **Anomaly Detection:** Unsupervised Machine Learning (`Isolation Forest`) to automatically flag suspicious behavior.
-*   **High-Throughput Ingestion:** FastAPI backend capable of handling concurrent log streams.
-*   **Non-Blocking Queue:** Redis implementation to buffer bursts of traffic.
-*   **Live Alerts:** Instant visual feedback when threats (SQLi, DDOS) are detected.
-*   **Traffic Simulation:** Includes a Python script to generate realistic organic vs. malicious traffic patterns.
-
-### Roadmap
-
-*   JWT Authentication for analyst access.
-*   Containerization via Docker Compose.
-*   Historical data export (CSV/JSON).
-
----
-
-## Backend (Python/FastAPI)
-
-The backend handles the data pipeline, consisting of three main components:
-
-1.  **API Gateway (`FastAPI`):** Accepts `POST` requests and pushes data to Redis.
-2.  **ML Worker:** Pulls logs from the queue, runs the `IsolationForest` model, and scores the threat level.
-3.  **WebSocket Manager:** Pushes processed data to connected clients.
-
-### Threat Detection Logic
-The system analyzes incoming logs based on status codes and message patterns.
-
-```python
-# Simplified Anomaly Logic
-if model.predict([log_features]) == -1:
-    log.is_threat = True
-    log.severity = "CRITICAL"
-```
-
----
-
-## Frontend (React + TypeScript)
-
-The dashboard (`/frontend`) is built for data density and performance.
-
-*   **UI Library:** Shadcn/UI + Tailwind CSS for a professional look.
-*   **State Management:** React Hooks manage the WebSocket connection state.
-*   **Visualization:** Recharts for rendering time-series data without rendering lag.
-
-It connects to the backend via a persistent WebSocket:
-
-```typescript
-const ws = new WebSocket("ws://localhost:8000/ws/logs");
-
-ws.onmessage = (event) => {
-    const newLog = JSON.parse(event.data);
-    setLogs((prev) => [newLog, ...prev]);
-};
-```
-
----
-
-## Communication Protocol
-
-The system uses standard JSON over HTTP for ingestion and JSON over WebSockets for streaming.
-
-### 1. Ingestion (Generator → API)
-Endpoint: `POST /api/logs`
-
-```json
-{
-  "service": "payment-gateway",
-  "status_code": 200,
-  "message": "Transaction verified",
-  "timestamp": "2023-10-25T10:30:00Z"
-}
-```
-
-### 2. Streaming (API → Dashboard)
-The WebSocket stream sends enriched objects with threat scores:
-
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| `id` | UUID | Unique Event ID |
-| `is_threat` | Bool | Flagged by ML model |
-| `severity` | Enum | INFO / WARNING / CRITICAL |
-| `source_ip` | String | Originating IP address |
-
----
-
-## How to Run
-
-You can run the project using **Docker** (recommended for quick start) or **Manually** (recommended for development).
-
-### Option 1: Docker (Fastest)
-
-Run the entire stack (Frontend, Backend, Redis, Database) with one command.
-
-1.  Ensure **Docker Desktop** is running.
-2.  In the root directory, run:
+## Architecture
 
 ```bash
-docker-compose up --build
+[ Log Source / Traffic Script ]
+        │  (HTTP POST /api/logs)
+        ▼
+[ FastAPI Ingestion ]
+        │
+        ▼  (Redis Queue / PubSub)
+[ Processing Worker ] ──> [ Isolation Forest Anomaly Detection ]
+        │
+        ▼  (WebSocket Broadcast)
+[ React + Shadcn Dashboard ]
 ```
 
-3.  The app will be available at `http://localhost:5173`.
+1. **Ingestion Layer (`FastAPI`):** Non-blocking HTTP endpoints that accept structured log payloads and offload them to Redis to prevent request bottlenecks.
+2. **Buffer / Broker (`Redis`):** Decouples log ingestion from ML scoring and client broadcasting.
+3. **Detection Worker:** Evaluates incoming request characteristics (response codes, payload anomalies, request frequency) using scikit-learn's `IsolationForest`.
+4. **Live UI (`React`, `TypeScript`, `Tailwind`, `Recharts`):** Subscribes to the WebSocket feed to graph live throughput, calculate moving error rates, and display an inspectable triage table.
 
-### Option 2: Manual Setup (Dev Mode)
+---
 
-#### 1. Setup the Backend
+## Tech Stack
 
-Navigate to the backend folder and create a virtual environment:
+* **Backend:** Python 3.11+, FastAPI, Uvicorn, Redis-py, Scikit-learn
+* **Frontend:** React, TypeScript, Vite, Tailwind CSS, Shadcn UI, Recharts
+* **Infrastructure:** Docker, Docker Compose, Redis
 
+---
+
+## Getting Started
+
+### Prerequisites
+* [Docker Desktop](https://www.docker.com/) installed and running.
+
+### Option 1: Docker Compose (Recommended)
+
+Spins up the Backend, Redis broker, Frontend, and synthetic Traffic Generator in one command:
+
+```bash
+docker compose up --build
+```
+
+* **Dashboard UI:** `http://localhost:5173`
+* **FastAPI Docs:** `http://localhost:8000/docs`
+
+---
+
+### Option 2: Local Development Setup
+
+If you want to run services locally without Docker:
+
+#### 1. Start Redis
+Make sure a local Redis instance is running on port `6379`:
+```bash
+# Via WSL / Linux
+sudo service redis-server start
+
+# Or standalone Docker
+docker run -d -p 6379:6379 redis:alpine
+```
+
+#### 2. Backend Setup
 ```bash
 cd backend
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-```
 
-Start the API server:
-```bash
+# Windows
+venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
+
+pip install -r requirements.txt
 python main.py
 ```
 
-#### 2. Start the Dashboard
-
-Navigate to the frontend folder and install dependencies:
-
+#### 3. Frontend Setup
 ```bash
-cd frontend
+cd frontend/sentinel-ui
 npm install
 npm run dev
 ```
 
-Open `http://localhost:5173` in your browser.
-
----
-
-### 3. Generate Traffic
-
-The dashboard will be empty initially because the database is fresh. You need to run the simulation script to create organic traffic and attacks.
-
-**If running via Docker:**
+#### 4. Simulate Log Traffic
+To test the pipeline with a mix of organic requests and attack signatures:
 ```bash
-# Execute the script inside the running backend container
-docker-compose exec backend python traffic_generator.py
-```
-
-**If running Manually:**
-```bash
-cd backend
+cd scripts
 python traffic_generator.py
 ```
 
-*You should see the graphs and logs update instantly on the dashboard.*
+---
+
+## Log Event Schema
+
+Logs are ingested via `POST /api/logs` using the following schema:
+
+```json
+{
+  "service": "auth-service",
+  "status_code": 401,
+  "message": "Failed login attempt from IP 192.168.1.45",
+  "timestamp": "2026-09-10T11:00:00Z"
+}
+```
+
+Flagged events broadcast over `ws://localhost:8000/ws/dashboard` include enriched threat telemetry:
+
+```json
+{
+  "id": "f81d4fae-7dec-11d0-a765-00a0c91e6bf6",
+  "timestamp": "2026-09-10T11:00:00Z",
+  "service": "auth-service",
+  "level": "CRITICAL",
+  "message": "Potential credential stuffing detected",
+  "statusCode": 401,
+  "is_threat": true
+}
+```
+
+---
+
+## Planned Improvements
+
+- [ ] **Detection Rules:** Add rule-based pattern matching (SQLi, Path Traversal regex, Sigma signatures) alongside the ML model to reduce false positives.
+- [ ] **Stream Reliability:** Migrate from Redis Pub/Sub to Redis Streams with consumer groups for persistent message replay.
+- [ ] **Real Log Collectors:** Replace the mock script with a Fluentbit / Filebeat collector parsing live Nginx logs.
