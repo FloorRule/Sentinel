@@ -1,3 +1,4 @@
+// LogsTable.tsx
 import {
   Table,
   TableBody,
@@ -5,61 +6,80 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "./components/ui/table"
-import { Badge } from "./components/ui/badge"
-import { ScrollArea } from "./components/ui/scroll-area"
-import type { Log } from "./types"
-
+} from "./components/ui/table";
+import { Badge } from "./components/ui/badge";
+import { ScrollArea } from "./components/ui/scroll-area";
+import type { Log } from "./types";
 
 export function LogsTable({ logs }: { logs: Log[] }) {
+  if (logs.length === 0) {
+    return (
+      <div className="flex h-[250px] w-full flex-col items-center justify-center rounded-md border border-dashed text-center">
+        <p className="font-mono text-sm text-muted-foreground">Waiting for events...</p>
+        <p className="text-xs text-muted-foreground/70">Connect backend server to see live logs.</p>
+      </div>
+    );
+  }
+
   return (
-    <ScrollArea className="h-[400px] w-full rounded-md border">
+    <ScrollArea className="h-[380px] w-full rounded-md border">
       <Table>
-        <TableHeader className="sticky top-0 bg-secondary">
-          <TableRow>
-            <TableHead className="w-[100px]">Time</TableHead>
-            <TableHead className="w-[100px]">Level</TableHead>
-            <TableHead className="w-[150px]">Service</TableHead>
-            <TableHead>Message</TableHead>
-            <TableHead className="text-right">Code</TableHead>
+        <TableHeader className="sticky top-0 bg-slate-100/90 backdrop-blur-sm shadow-sm">
+          <TableRow className="border-b">
+            <TableHead className="w-[110px] text-xs font-mono">TIMESTAMP</TableHead>
+            <TableHead className="w-[90px] text-xs font-mono">SEVERITY</TableHead>
+            <TableHead className="w-[140px] text-xs font-mono">SERVICE</TableHead>
+            <TableHead className="text-xs font-mono">MESSAGE</TableHead>
+            <TableHead className="w-[80px] text-right text-xs font-mono">CODE</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {logs.map((log) => (
-            <TableRow key={log.timestamp + log.service + log.level}>
-              
-              {/* Timestamp */}
-              <TableCell className="font-mono text-xs text-muted-foreground">
+          {logs.map((log, idx) => (
+            <TableRow key={log.id || `${log.timestamp}-${idx}`} className="hover:bg-slate-50/80">
+              <TableCell className="font-mono text-xs text-slate-500 whitespace-nowrap">
                 {new Date(log.timestamp).toLocaleTimeString()}
               </TableCell>
 
-              {/* Status Badge */}
               <TableCell>
-                <Badge 
-                  variant="outline" 
-                  className={`
-                    ${log.level === 'CRITICAL' || log.level === 'ERROR' ? 'text-red-500 border-red-500 bg-red-50 dark:bg-red-950/20' : ''}
-                    ${log.level === 'WARNING' ? 'text-orange-500 border-orange-500 bg-orange-50 dark:bg-orange-950/20' : ''}
-                    ${log.level === 'INFO' ? 'text-blue-500 border-blue-500 bg-blue-50 dark:bg-blue-950/20' : ''}
-                  `}
-                >
+                <Badge
+                  variant="outline"
+                  className={`font-mono text-[10px] tracking-wide px-1.5 py-0 ${
+                    log.level === "CRITICAL" || log.level === "ERROR"
+                      ? "border-red-300 bg-red-50 text-red-700"
+                      : log.level === "WARNING"
+                      ? "border-amber-300 bg-amber-50 text-amber-700"
+                      : "border-blue-300 bg-blue-50 text-blue-700"}`}>
                   {log.level}
                 </Badge>
               </TableCell>
 
-              <TableCell className="text-sm font-medium">{log.service}</TableCell>
-              
-              <TableCell className="font-mono text-xs text-muted-foreground max-w-[400px] truncate" title={log.message}>
+              <TableCell className="text-xs font-medium font-mono text-slate-700">
+                {log.service}
+              </TableCell>
+
+              <TableCell className="font-mono text-xs text-slate-600 max-w-[360px] truncate"
+                title={log.message}>
+                  
                 {log.message}
               </TableCell>
 
-              <TableCell className="text-right font-mono text-xs">
-                {log.statusCode}
+              <TableCell className="text-right font-mono text-xs font-semibold">
+                <span
+                  className={
+                    log.statusCode >= 500
+                      ? "text-red-600"
+                      : log.statusCode >= 400
+                      ? "text-amber-600"
+                      : "text-emerald-600"
+                  }
+                >
+                  {log.statusCode}
+                </span>
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </ScrollArea>
-  )
+  );
 }
