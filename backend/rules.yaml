@@ -1,0 +1,29 @@
+#! Generated -
+rules:
+  - id: "RULE-001"
+    name: "SQL Injection Attempt"
+    severity: "HIGH"
+    target_field: "endpoint"
+    pattern: "(?i)('\\s*OR\\s*['0-9]|union\\s+select|--)"
+    description: "Detected common SQL injection syntax in the requested URI."
+
+  - id: "RULE-002"
+    name: "Directory / Path Traversal"
+    severity: "HIGH"
+    target_field: "endpoint"
+    pattern: "(\\.\\./|\\.\\.\\\\|/etc/passwd)"
+    description: "Detected relative directory climbing patterns."
+
+  - id: "RULE-003"
+    name: "Cross-Site Scripting (XSS)"
+    severity: "MEDIUM"
+    target_field: "endpoint"
+    pattern: "(?i)(<script.*?>|javascript:|onload=)"
+    description: "Detected script tag injection inside URI parameter."
+
+  - id: "RULE-004"
+    name: "Automated Security Scanner"
+    severity: "HIGH"
+    target_field: "user_agent"
+    pattern: "(?i)(sqlmap|nikto|nmap|masscan|acunetix)"
+    description: "Known vulnerability scanner user-agent string."

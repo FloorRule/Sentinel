@@ -1,175 +1,221 @@
+
 # Sentinel
 
-**Real-Time SIEM & Log Analysis Platform**
+A high-throughput, real-time log ingestion and hybrid threat detection system.
 
-Sentinel is a **Cyber-SaaS dashboard** designed to visualize, analyze, and flag high-throughput server traffic in real-time. It ingests events via a high-performance Python API, queues them to prevent blocking, processes them using Machine Learning for threat detection, and streams live updates to a React client.
+Sentinel ingests raw HTTP access and application logs through an asynchronous FastAPI pipeline, evaluates them across a multi-stage hybrid inspection engine (deterministic regex signatures, live Tor threat intelligence, and an unsupervised Isolation Forest model), and streams enriched security telemetry to a React/TypeScript dashboard via WebSockets.
 
-https://github.com/user-attachments/assets/dea9ec61-f66b-4253-94a0-1b08c6ad3265
-
----
-
-## Overview
-
-The system allows administrators to monitor network traffic as it happens. The architecture is decoupled into a high-speed ingestion layer and a reactive visualization layer:
-
-*   **Ingestion:** High-performance API that accepts logs without blocking.
-*   **Processing:** Asynchronous background workers analyze logs for security threats.
-*   **Storage:** Persistent storage of traffic history.
-*   **Streaming:** Sub-second data delivery to the frontend via WebSockets.
+https://github.com/user-attachments/assets/d904cd6f-01fa-4bc9-9cf8-c7e1f5edce39
 
 ---
 
-## Features
+## Key Highlights
 
-### Implemented
-
-*   **Real-Time Dashboard:** Live visualization of traffic spikes and HTTP status distributions using Recharts.
-*   **Anomaly Detection:** Unsupervised Machine Learning (`Isolation Forest`) to automatically flag suspicious behavior.
-*   **High-Throughput Ingestion:** FastAPI backend capable of handling concurrent log streams.
-*   **Non-Blocking Queue:** Redis implementation to buffer bursts of traffic.
-*   **Live Alerts:** Instant visual feedback when threats (SQLi, DDOS) are detected.
-*   **Traffic Simulation:** Includes a Python script to generate realistic organic vs. malicious traffic patterns.
-
-### Roadmap
-
-*   JWT Authentication for analyst access.
-*   Containerization via Docker Compose.
-*   Historical data export (CSV/JSON).
+* **Hybrid Detection Engine:** Combines deterministic signature matching (eliminating false positives on known exploits) with unsupervised anomaly detection (catching zero-days and behavioral outliers).
+* **8-Dimensional Security Feature Extraction:** Evaluates mathematical entropy, syntactic structure, and protocol metadata for real-time ML inference.
+* **Live Threat Intelligence:** Tracks active Tor exit nodes with periodic sync and in-memory $O(1)$ lookup complexity.
+* **Explainable Multi-Signal Scoring:** Normalizes disparate security signals into a $0.0 - 1.0$ risk score mapped to actionable severity tiers with granular reason arrays.
+* **Decoupled Asynchronous Streaming:** Uses Redis Pub/Sub to decouple high-volume log ingestion from ML scoring and WebSocket client broadcasting.
 
 ---
 
-## Backend (Python/FastAPI)
+## System Architecture
 
-The backend handles the data pipeline, consisting of three main components:
-
-1.  **API Gateway (`FastAPI`):** Accepts `POST` requests and pushes data to Redis.
-2.  **ML Worker:** Pulls logs from the queue, runs the `IsolationForest` model, and scores the threat level.
-3.  **WebSocket Manager:** Pushes processed data to connected clients.
-
-### Threat Detection Logic
-The system analyzes incoming logs based on status codes and message patterns.
-
-```python
-# Simplified Anomaly Logic
-if model.predict([log_features]) == -1:
-    log.is_threat = True
-    log.severity = "CRITICAL"
+```
+[ Log Stream / Ingestion ]
+           │  POST /api/logs
+           ▼
+[ FastAPI Ingestion API ]
+           │
+           ▼  (Redis Broker)
+┌───────────────────────────────────────────────────────────┐
+│              HYBRID THREAT DETECTION PIPELINE             │
+│                                                           │
+│ 1. Rule Engine  ──► 2. Threat Intel ──► 3. Isolation Forest│
+│   (rules.yaml)       (Tor Relays)        (8D Vector)      │
+│                                                           │
+│                             │                             │
+│                             ▼                             │
+│             4. Multi-Signal Risk Scorer                   │
+│          (Normalized 0.0 - 1.0 & Severity)                │
+└───────────────────────────────────────────────────────────┘
+           │
+           ├────────────────────────┬──────────────────────┐
+           ▼                        ▼                      ▼
+  [ SQLite / DB Cache ]     [ Redis Pub/Sub ]      [ Console Audit ]
+                                    │
+                                    ▼  (WebSocket Feed)
+                      [ React + Shadcn Dashboard ]
 ```
 
 ---
 
-## Frontend (React + TypeScript)
+## Detection Pipeline Deep-Dive
 
-The dashboard (`/frontend`) is built for data density and performance.
+Sentinel does not rely on a single detection paradigm. Every ingested log passes through an orchestrated 4-stage evaluation flow:
 
-*   **UI Library:** Shadcn/UI + Tailwind CSS for a professional look.
-*   **State Management:** React Hooks manage the WebSocket connection state.
-*   **Visualization:** Recharts for rendering time-series data without rendering lag.
+### 1. Deterministic Signature Engine (`rule_engine.py`, `rules.yaml`)
+* Evaluates request parameters, paths, and headers against pre-compiled regular expressions.
+* Detects explicit exploit attempts:
+  * **SQL Injection (SQLi):** Union-based, boolean blind, and error-based payloads.
+  * **Path Traversal / LFI:** Directory traversal sequences (`../`, `/etc/passwd`).
+  * **Cross-Site Scripting (XSS):** Script tags, event handlers, and attribute injection.
+  * **Automated Scanners:** Flags probing by tools such as `sqlmap`, `nikto`, `nmap`, or `gobuster`.
 
-It connects to the backend via a persistent WebSocket:
+### 2. Threat Intelligence & Anonymity Tracking (`tor_intel.py`)
+* Automatically synchronizes with the official Tor Project bulk exit node directory on a configurable background interval.
+* Ingests addresses into an in-memory hash set for $O(1)$ lookup overhead during stream evaluation.
+* Immediate correlation: raises base risk score when malicious patterns originate from anonymous exit relays.
 
-```typescript
-const ws = new WebSocket("ws://localhost:8000/ws/logs");
+### 3. Behavioral Anomaly Detection (`data_preprocess.py`, `train_isolation_forest.py`)
+* Employs Scikit-Learn’s `IsolationForest` trained on clean baseline traffic to detect unknown zero-day anomalies.
+* Extracts an **8-dimensional numerical feature vector** on every request:
+  1. **Shannon Entropy:** Measures character randomness across query paths (identifies hex-encoding, encrypted shells, and obfuscated shellcode).
+  2. **Endpoint Length:** Identifies buffer overflow attempts and deeply nested URI fuzzing.
+  3. **Path Depth:** Slash count (`/`) measuring hierarchy navigation.
+  4. **Special Character Density:** Ratio of non-alphanumeric security delimiters (`'`, `"`, `<`, `>`, `;`, `%`, `&`, `|`).
+  5. **User-Agent Length:** Detects stripped, missing, or abnormally long UA strings.
+  6. **HTTP Status Code:** Incorporates downstream server responses (e.g., 401, 403, 500).
+  7. **Log Severity Weight:** Numeric weighting based on application log level.
+  8. **Method Weighting:** Assigns risk factors to non-idempotent HTTP verbs (POST, PUT, DELETE).
 
-ws.onmessage = (event) => {
-    const newLog = JSON.parse(event.data);
-    setLogs((prev) => [newLog, ...prev]);
-};
-```
-
----
-
-## Communication Protocol
-
-The system uses standard JSON over HTTP for ingestion and JSON over WebSockets for streaming.
-
-### 1. Ingestion (Generator → API)
-Endpoint: `POST /api/logs`
-
-```json
-{
-  "service": "payment-gateway",
-  "status_code": 200,
-  "message": "Transaction verified",
-  "timestamp": "2023-10-25T10:30:00Z"
-}
-```
-
-### 2. Streaming (API → Dashboard)
-The WebSocket stream sends enriched objects with threat scores:
-
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| `id` | UUID | Unique Event ID |
-| `is_threat` | Bool | Flagged by ML model |
-| `severity` | Enum | INFO / WARNING / CRITICAL |
-| `source_ip` | String | Originating IP address |
+### 4. Multi-Signal Risk Scoring (`multi_detector.py`)
+* Synthesizes outputs from all previous stages into a unified risk score normalized between **`0.0`** and **`1.0`**.
+* Maps scores into standard operational severity tiers:
+  * `0.0 - 0.2` -> **INFO**
+  * `0.2 - 0.5` -> **LOW**
+  * `0.5 - 0.7` -> **MEDIUM**
+  * `0.7 - 0.85` -> **HIGH**
+  * `0.85 - 1.0` -> **CRITICAL**
+* Generates an **explainable reason array** (e.g., `["SQL Injection pattern matched", "Traffic from active Tor exit node", "High URL Shannon entropy"]`) ensuring security operators know exactly why an alert was triggered.
 
 ---
 
-## How to Run
+## Tech Stack
 
-You can run the project using **Docker** (recommended for quick start) or **Manually** (recommended for development).
+| Layer | Technologies |
+| :--- | :--- |
+| **Backend & Ingestion** | Python 3.11+, FastAPI, Uvicorn, Pydantic v2 |
+| **Detection & Analytics**| Scikit-Learn (Isolation Forest), NumPy, Pandas, PyYAML |
+| **Caching & Messaging** | Redis (Pub/Sub & message brokering), SQLite |
+| **Frontend UI** | React 18, TypeScript, Vite, Tailwind CSS, Shadcn UI, Recharts |
+| **DevOps & Containers** | Docker, Docker Compose |
 
-### Option 1: Docker (Fastest)
+---
 
-Run the entire stack (Frontend, Backend, Redis, Database) with one command.
+## Getting Started
 
-1.  Ensure **Docker Desktop** is running.
-2.  In the root directory, run:
+### Prerequisites
+* [Docker Desktop](https://www.docker.com/) installed and running.
+
+---
+
+### Option 1: Docker Compose (Recommended)
+
+Spins up the Ingestion API, Redis broker, ML evaluation pipeline, React frontend, and a synthetic traffic generator with a single command:
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
-3.  The app will be available at `http://localhost:5173`.
+* **Interactive Dashboard:** `http://localhost:5173`
+* **FastAPI Swagger Docs:** `http://localhost:8000/docs`
+* **WebSocket Stream Endpoint:** `ws://localhost:8000/ws/dashboard`
 
-### Option 2: Manual Setup (Dev Mode)
+---
 
-#### 1. Setup the Backend
+### Option 2: Local Development Setup
 
-Navigate to the backend folder and create a virtual environment:
+#### 1. Start Redis
+Make sure a local Redis instance is running on port `6379`:
+```bash
+# Via native service
+sudo service redis-server start
 
+# Or standalone Docker
+docker run -d -p 6379:6379 --name sentinel-redis redis:alpine
+```
+
+#### 2. Backend Setup
 ```bash
 cd backend
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-```
 
-Start the API server:
-```bash
+# Windows
+venv\Scripts\activate
+# Linux/macOS
+source venv/bin/activate
+
+pip install -r requirements.txt
+
+# (Optional) Re-train baseline Isolation Forest model
+python train_isolation_forest.py
+
+# Launch API
 python main.py
 ```
 
-#### 2. Start the Dashboard
-
-Navigate to the frontend folder and install dependencies:
-
+#### 3. Frontend Setup
 ```bash
-cd frontend
+cd frontend/sentinel-ui
 npm install
 npm run dev
 ```
 
-Open `http://localhost:5173` in your browser.
-
----
-
-### 3. Generate Traffic
-
-The dashboard will be empty initially because the database is fresh. You need to run the simulation script to create organic traffic and attacks.
-
-**If running via Docker:**
+#### 4. Run Traffic Simulation
+Generate realistic traffic containing benign queries alongside simulated SQLi, XSS, and Tor-originating events:
 ```bash
-# Execute the script inside the running backend container
-docker-compose exec backend python traffic_generator.py
-```
-
-**If running Manually:**
-```bash
-cd backend
+cd scripts
 python traffic_generator.py
 ```
 
-*You should see the graphs and logs update instantly on the dashboard.*
+---
+
+## Data Schemas
+
+### 1. Ingestion Payload (`POST /api/logs`)
+```json
+{
+  "service": "auth-service",
+  "endpoint": "/api/v1/login?user=admin' OR 1=1 --",
+  "method": "POST",
+  "status_code": 401,
+  "client_ip": "185.220.101.5",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+  "message": "Authentication failed for user payload",
+  "timestamp": "2026-09-17T12:00:00Z"
+}
+```
+
+### 2. Enriched WebSocket Telemetry Event (`ws://.../ws/dashboard`)
+```json
+{
+  "id": "e4b3c79a-6c12-4d22-92a1-b8478d10b8cf",
+  "timestamp": "2026-09-17T12:00:00Z",
+  "service": "auth-service",
+  "endpoint": "/api/v1/login?user=admin' OR 1=1 --",
+  "client_ip": "185.220.101.5",
+  "risk_score": 0.94,
+  "level": "CRITICAL",
+  "is_threat": true,
+  "is_tor": true,
+  "rule_matches": ["SQL_INJECTION_AUTH_BYPASS"],
+  "reasons": [
+    "Matched deterministic SQLi signature: OR 1=1",
+    "Originating IP matches active Tor Exit Node",
+    "High punctuation and delimiter density in endpoint"
+  ]
+}
+```
+
+---
+
+## Roadmap
+
+- [x] **Rule-Based Engine:** Pre-compiled regex evaluation for SQLi, XSS, and scanner signatures.
+- [x] **Threat Intelligence:** In-memory Tor exit node correlation.
+- [x] **Unsupervised ML:** Isolation Forest integration for zero-day entropy anomalies.
+- [ ] **Stream Reliability:** Migrate internal Redis messaging from Pub/Sub to **Redis Streams** with consumer groups for persistent message replay.
+- [ ] **Sigma Rule Parser:** Native support for compiling community Sigma detection rules into Sentinel signatures.
+- [ ] **Daemon Log Agent:** Standalone Go-based log shipping daemon (alternative to Filebeat) for direct Nginx/kernel auditd log harvesting.
+```

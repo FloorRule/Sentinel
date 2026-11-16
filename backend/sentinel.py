@@ -1,53 +1,96 @@
+import json
 from math import floor
+from typing import List
 from pydantic import BaseModel
 from db.init_db_script import get_connection
-from sentinelml.ml.model import IsolationForestDetector
 from wsManage import broadcast
 from Redis.redis_client import cache_get, cache_set
+from multi_detector import MultiDetector
 
 TEST_MODE = False
+TRAIN_MODE = False
 
-detector = IsolationForestDetector()
+detector = None if TRAIN_MODE else MultiDetector()
 
 class LogProccedEntry(BaseModel):
     timestamp: str
     service: str
     level: str
     message: str
-    is_threat: bool
+    endpoint: str = "/"
+    status_code: int = 200
+    user_agent: str = "unknown"
+    client_ip: str = "127.0.0.1"
+    is_threat: bool = False
+    risk_score: float = 0.0
+    severity: str = "INFO"
+    tags: List[str]
+    reasons: List[str]
 
 async def run_sentinel(log):
     if(TEST_MODE): print("Processing:", log)
-    #is_threating = (log["level"] == "ERROR" or log["message"].find("SQL Injection") != -1);
-    prediction = detector.predict_log(log)
+
+    if not TRAIN_MODE and detector is not None:
+        prediction = detector.analyze(log)
+    else:
+        #! Clean result
+        prediction = {
+            "is_threat": False,
+            "risk_score": 0.0,
+            "severity": "INFO",
+            "tags": [],
+            "reasons": []
+        }
 
     if(TEST_MODE): print(prediction["score"])
-    is_threating = prediction["is_anomaly"]
 
     entry = LogProccedEntry(
-        timestamp=log["timestamp"],
-        service=log["service"],
-        level=log["level"],
-        message=log["message"],
-        is_threat=is_threating
+        timestamp = log["timestamp"],
+        service = log["service"],
+        level = log["level"],
+        message = log["message"],
+        endpoint = log["endpoint"],
+        status_code = log["status_code"],
+        is_threat = prediction["is_threat"],
+        client_ip = log["client_ip"],
+        risk_score = prediction["risk_score"],
+        severity = prediction["severity"],
+        tags = prediction["tags"],
+        reasons = prediction["reasons"]
     )
-    insert_log(entry.model_dump())
+    entry_data = entry.model_dump()
+    insert_log(entry_data)
 
-    return entry.model_dump()
+    return entry_data
 
 def insert_log(log: dict):
     conn = get_connection()
     cursor = conn.cursor()
 
+    tags_json = json.dumps(log.get("tags", []))
+    reasons_json = json.dumps(log.get("reasons", []))
+
     cursor.execute("""
-        INSERT INTO logs (timestamp, service, level, message, is_threat)
-        VALUES (?, ?, ?, ?, ?)
+        INSERT INTO logs(
+            timestamp, service, level, message,
+            endpoint, status_code, user_agent, client_ip,
+            is_threat, risk_score, severity, tags, reasons
+            )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        log["timestamp"],
-        log["service"],
-        log["level"],
-        log["message"],
-        log["is_threat"],
+        log.get("timestamp"),
+        log.get("service"),
+        log.get("level"),
+        log.get("message"),
+        log.get("endpoint", "/"),
+        log.get("status_code", 200),
+        log.get("user_agent", "unknown"),
+        log.get("client_ip", "127.0.0.1"),
+        1 if log.get("is_threat") else 0,
+        log.get("risk_score", 0.0),
+        log.get("severity", "INFO"),
+        tags_json,
+        reasons_json
     ))
 
     conn.commit()
@@ -62,7 +105,23 @@ def get_recent_logs():
     rows = cursor.fetchall()
 
     columns = [col[0] for col in cursor.description]
-    result = [dict(zip(columns, row)) for row in rows]
+    result = []
+
+    for row in rows:
+        dictRepresent = dict(zip(columns, row))
+
+        if "tags" in dictRepresent:
+            try: 
+                dictRepresent["tags"] = json.loads(dictRepresent["tags"])
+            except: 
+                dictRepresent["tags"] = []
+
+        if "reasons" in dictRepresent:
+            try: 
+                dictRepresent["reasons"] = json.loads(dictRepresent["reasons"])
+            except: 
+                dictRepresent["reasons"] = []
+        result.append(dictRepresent)
 
     conn.close()
     return result
@@ -78,10 +137,11 @@ async def get_stats():
     cursor = conn.cursor()
 
     cursor.execute("SELECT COUNT(*) FROM logs")
-    total_vol = cursor.fetchall()[0][0]
+    total_vol = cursor.fetchone()[0]
 
-    cursor.execute("SELECT COUNT(*) FROM logs WHERE is_threat==true")
-    threats_detected = cursor.fetchall()[0][0]
+    cursor.execute("SELECT COUNT(*) FROM logs WHERE is_threat = 1")
+    threats_detected = cursor.fetchone()[0]
+
     if total_vol == 0:
         error_rate = 0
     else:

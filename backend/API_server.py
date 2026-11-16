@@ -1,10 +1,10 @@
 import json
+from typing import Optional
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from Redis.redis_client import get_redis, publish_event
 from sentinel import get_recent_logs, run_sentinel, get_stats, get_charts_data
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from wsManage import broadcast, connected_clients
 
 TEST_MODE = False
 
@@ -23,12 +23,15 @@ class LogEntry(BaseModel):
     service: str
     level: str
     message: str
-    endpoint: str
-    status_code: int
+    endpoint: str = "/"
+    status_code: int = 200
+    user_agent: str = "unknown"
+    client_ip: str = "127.0.0.1"
 
 @app.post("/api/logs")
 async def logAnalysis(log: LogEntry):
-    if(TEST_MODE): print("Received log:", log)
+    if TEST_MODE: 
+        print("Received log:", log)
 
     result = await run_sentinel(log.model_dump())
     stats = await get_stats()
@@ -44,7 +47,20 @@ async def logAnalysis(log: LogEntry):
 
     return {"result": result}
 
+#! For initial page load
+@app.get("/api/logs")
+def fetch_recent_logs():
+    return get_recent_logs()
 
+@app.get("/api/stats")
+async def fetch_stats():
+    return await get_stats()
+
+@app.get("/api/chart-data")
+async def fetch_charts():
+    return await get_charts_data()
+
+#! WebSocket
 @app.websocket("/ws/dashboard")
 async def dashboard_ws(ws: WebSocket):
     await ws.accept()
@@ -56,16 +72,12 @@ async def dashboard_ws(ws: WebSocket):
     try:
         async for message in pubsub.listen():
             if message["type"] == "message":
-                #  parse Redis data
+                #! Parse Redis event
                 data = json.loads(message["data"])
                 
-                # Send Log to Frontend
+                #! Stream to React frontend
                 await ws.send_json({"type": "logs", "data": data["log"]})
-                
-                # Send Stats to Frontend
                 await ws.send_json({"type": "stats", "data": data["stats"]})
-
-                # Send Charts to Frontend
                 await ws.send_json({"type": "chart-data", "data": data["charts"]})
 
     except WebSocketDisconnect:

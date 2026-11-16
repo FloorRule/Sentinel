@@ -1,261 +1,275 @@
-timestamp,service,level,message
-2025-12-06T22:55:51.640010,payment-api,INFO,Payment verified
-2025-12-06T22:55:53.150670,payment-api,INFO,Session refreshed
-2025-12-06T22:55:54.856290,database-worker,INFO,Session refreshed
-2025-12-06T22:55:56.312155,database-worker,INFO,User action processed successfully
-2025-12-06T22:55:58.219492,frontend-ui,INFO,Page load complete
-2025-12-06T22:55:59.824522,frontend-ui,INFO,User action processed successfully
-2025-12-06T22:56:00.739174,payment-api,INFO,Database sync finished
-2025-12-06T22:56:02.866944,payment-api,INFO,User logout success
-2025-12-06T22:56:04.092428,database-worker,INFO,Health check OK
-2025-12-06T22:56:05.510930,database-worker,INFO,Payment verified
-2025-12-06T22:56:07.133235,payment-api,INFO,Page load complete
-2025-12-06T22:56:07.944862,auth-service,INFO,Session refreshed
-2025-12-06T22:56:10.714019,frontend-ui,INFO,Health check OK
-2025-12-06T22:56:12.610699,frontend-ui,INFO,Page load complete
-2025-12-06T22:56:14.642149,auth-service,INFO,User action processed successfully
-2025-12-06T22:56:16.090540,database-worker,INFO,Page load complete
-2025-12-06T22:56:17.152417,frontend-ui,INFO,Page load complete
-2025-12-06T22:56:19.247172,database-worker,INFO,User action processed successfully
-2025-12-06T22:56:20.244294,frontend-ui,INFO,Payment verified
-2025-12-06T22:56:21.835222,payment-api,INFO,Database sync finished
-2025-12-06T22:56:22.726252,payment-api,INFO,User action processed successfully
-2025-12-06T22:56:23.488787,payment-api,INFO,User logout success
-2025-12-06T22:56:25.222545,payment-api,INFO,Session refreshed
-2025-12-06T22:56:26.962624,frontend-ui,INFO,User logout success
-2025-12-06T22:56:28.756167,payment-api,INFO,Health check OK
-2025-12-06T22:56:30.951652,payment-api,INFO,Page load complete
-2025-12-06T22:56:32.600050,auth-service,INFO,Database sync finished
-2025-12-06T22:56:33.981434,database-worker,INFO,User action processed successfully
-2025-12-06T22:56:35.949373,payment-api,INFO,User action processed successfully
-2025-12-06T22:56:37.463732,database-worker,INFO,Database sync finished
-2025-12-06T22:56:39.846318,database-worker,INFO,User logout success
-2025-12-06T22:56:41.766930,payment-api,INFO,User action processed successfully
-2025-12-06T22:56:43.843662,frontend-ui,INFO,Session refreshed
-2025-12-06T22:56:44.779575,frontend-ui,INFO,User logout success
-2025-12-06T22:56:46.449517,payment-api,INFO,Health check OK
-2025-12-06T22:56:48.332416,database-worker,INFO,User logout success
-2025-12-06T22:56:49.682635,payment-api,INFO,Payment verified
-2025-12-06T22:56:51.643153,payment-api,INFO,Health check OK
-2025-12-06T22:56:54.213656,payment-api,INFO,Session refreshed
-2025-12-06T22:56:55.404745,database-worker,INFO,User action processed successfully
-2025-12-06T22:56:58.243513,frontend-ui,INFO,User logout success
-2025-12-06T22:57:01.306758,payment-api,INFO,Page load complete
-2025-12-06T22:57:04.113211,database-worker,INFO,User logout success
-2025-12-06T22:57:05.577188,auth-service,INFO,User logout success
-2025-12-06T22:57:08.920986,frontend-ui,INFO,User action processed successfully
-2025-12-06T22:57:12.327579,payment-api,INFO,Database sync finished
-2025-12-06T22:57:14.030312,payment-api,INFO,User action processed successfully
-2025-12-06T22:57:17.241789,frontend-ui,INFO,Page load complete
-2025-12-06T22:57:18.946700,payment-api,INFO,Session refreshed
-2025-12-06T22:57:21.242953,auth-service,INFO,Database sync finished
-2025-12-06T22:57:23.927181,payment-api,INFO,Database sync finished
-2025-12-06T22:57:26.648871,auth-service,INFO,User action processed successfully
-2025-12-06T22:57:28.451040,frontend-ui,INFO,User logout success
-2025-12-06T22:57:30.917723,frontend-ui,INFO,Health check OK
-2025-12-06T22:57:33.178991,database-worker,INFO,User logout success
-2025-12-06T22:57:35.525086,payment-api,INFO,Database sync finished
-2025-12-06T22:57:38.433340,database-worker,INFO,User logout success
-2025-12-06T22:57:39.952779,database-worker,INFO,Health check OK
-2025-12-06T22:57:44.717606,frontend-ui,INFO,User action processed successfully
-2025-12-06T22:57:46.855388,database-worker,INFO,Payment verified
-2025-12-06T22:57:49.391374,database-worker,INFO,Database sync finished
-2025-12-06T22:57:51.459815,database-worker,INFO,Database sync finished
-2025-12-06T22:57:54.026310,database-worker,INFO,Payment verified
-2025-12-06T22:57:56.183645,database-worker,INFO,Session refreshed
-2025-12-06T22:57:57.763296,database-worker,INFO,Payment verified
-2025-12-06T22:58:01.265927,auth-service,INFO,User action processed successfully
-2025-12-06T22:58:03.685774,database-worker,INFO,Page load complete
-2025-12-06T22:58:06.025776,payment-api,INFO,Health check OK
-2025-12-06T22:58:07.418486,payment-api,INFO,User action processed successfully
-2025-12-06T22:58:10.823758,payment-api,INFO,User action processed successfully
-2025-12-06T22:58:13.119941,auth-service,INFO,Payment verified
-2025-12-06T22:58:16.003394,auth-service,INFO,Page load complete
-2025-12-06T22:58:18.800842,database-worker,INFO,Payment verified
-2025-12-06T22:58:21.234146,payment-api,INFO,Health check OK
-2025-12-06T22:58:24.240582,payment-api,INFO,Page load complete
-2025-12-06T22:58:26.418430,frontend-ui,INFO,Session refreshed
-2025-12-06T22:58:28.284272,payment-api,INFO,User action processed successfully
-2025-12-06T22:58:31.178236,payment-api,INFO,Payment verified
-2025-12-06T22:58:32.805799,frontend-ui,INFO,Session refreshed
-2025-12-06T22:58:36.279145,database-worker,INFO,User action processed successfully
-2025-12-06T22:58:37.470359,frontend-ui,INFO,Health check OK
-2025-12-06T22:58:39.809798,auth-service,INFO,User logout success
-2025-12-06T22:58:43.317474,frontend-ui,INFO,Database sync finished
-2025-12-06T22:58:46.817196,database-worker,INFO,Payment verified
-2025-12-06T22:58:48.610267,database-worker,INFO,Database sync finished
-2025-12-06T22:58:51.137406,database-worker,INFO,User action processed successfully
-2025-12-06T22:58:53.406048,payment-api,INFO,User action processed successfully
-2025-12-06T22:58:55.754287,frontend-ui,INFO,User logout success
-2025-12-06T22:58:58.259698,auth-service,INFO,User action processed successfully
-2025-12-06T22:59:01.114238,frontend-ui,INFO,Payment verified
-2025-12-06T22:59:03.132742,payment-api,INFO,Payment verified
-2025-12-06T22:59:05.144524,auth-service,INFO,Health check OK
-2025-12-06T22:59:07.319629,payment-api,INFO,Session refreshed
-2025-12-06T22:59:10.828951,frontend-ui,INFO,User action processed successfully
-2025-12-06T22:59:13.288308,payment-api,INFO,User action processed successfully
-2025-12-06T22:59:14.319339,payment-api,INFO,User action processed successfully
-2025-12-06T22:59:18.263035,payment-api,INFO,Page load complete
-2025-12-06T22:59:20.345568,auth-service,INFO,Session refreshed
-2025-12-06T22:59:23.388442,frontend-ui,INFO,Session refreshed
-2025-12-06T22:59:25.562623,frontend-ui,INFO,User logout success
-2025-12-06T22:59:28.664381,payment-api,INFO,Health check OK
-2025-12-06T22:59:30.382880,frontend-ui,INFO,Page load complete
-2025-12-06T22:59:33.583523,payment-api,INFO,User logout success
-2025-12-06T22:59:35.541436,database-worker,INFO,User action processed successfully
-2025-12-06T22:59:37.226546,frontend-ui,INFO,User logout success
-2025-12-06T22:59:40.319956,auth-service,INFO,User action processed successfully
-2025-12-06T22:59:41.988818,frontend-ui,INFO,User action processed successfully
-2025-12-06T22:59:44.086413,payment-api,INFO,Page load complete
-2025-12-06T22:59:49.094333,frontend-ui,INFO,Database sync finished
-2025-12-06T22:59:50.741484,payment-api,INFO,Payment verified
-2025-12-06T22:59:52.780303,frontend-ui,INFO,User action processed successfully
-2025-12-06T22:59:55.325537,frontend-ui,INFO,Database sync finished
-2025-12-06T22:59:57.353613,auth-service,INFO,Database sync finished
-2025-12-06T23:00:01.035051,frontend-ui,INFO,Payment verified
-2025-12-06T23:00:02.858006,frontend-ui,INFO,User logout success
-2025-12-06T23:00:05.429503,frontend-ui,INFO,Payment verified
-2025-12-06T23:00:09.873450,database-worker,INFO,User logout success
-2025-12-06T23:00:13.852386,payment-api,INFO,Session refreshed
-2025-12-06T23:00:19.974315,frontend-ui,INFO,User logout success
-2025-12-06T23:00:25.090870,database-worker,INFO,User logout success
-2025-12-06T23:00:30.154825,auth-service,INFO,Payment verified
-2025-12-06T23:00:33.627626,frontend-ui,INFO,Database sync finished
-2025-12-06T23:00:39.457692,auth-service,INFO,Payment verified
-2025-12-06T23:00:43.638158,auth-service,INFO,User action processed successfully
-2025-12-06T23:00:47.604711,auth-service,INFO,Payment verified
-2025-12-06T23:00:54.266136,payment-api,INFO,Session refreshed
-2025-12-06T23:00:57.618524,frontend-ui,INFO,User action processed successfully
-2025-12-06T23:01:02.926822,payment-api,INFO,Payment verified
-2025-12-06T23:01:07.836695,payment-api,INFO,Payment verified
-2025-12-06T23:01:11.253189,frontend-ui,INFO,User action processed successfully
-2025-12-06T23:01:16.223168,frontend-ui,INFO,Payment verified
-2025-12-06T23:01:21.769297,frontend-ui,INFO,Session refreshed
-2025-12-06T23:01:27.250296,frontend-ui,INFO,User logout success
-2025-12-06T23:01:30.810830,auth-service,INFO,Health check OK
-2025-12-06T23:01:36.693059,frontend-ui,INFO,Page load complete
-2025-12-06T23:01:41.292127,database-worker,INFO,Health check OK
-2025-12-06T23:01:43.071159,auth-service,INFO,Session refreshed
-2025-12-06T23:01:46.002484,frontend-ui,INFO,Page load complete
-2025-12-06T23:01:48.406032,auth-service,INFO,Health check OK
-2025-12-06T23:01:50.793250,database-worker,INFO,Session refreshed
-2025-12-06T23:01:54.976444,database-worker,INFO,Database sync finished
-2025-12-06T23:01:57.033017,database-worker,INFO,Database sync finished
-2025-12-06T23:01:59.249734,database-worker,INFO,Payment verified
-2025-12-06T23:02:02.259049,payment-api,INFO,User action processed successfully
-2025-12-06T23:02:03.797625,frontend-ui,INFO,User action processed successfully
-2025-12-06T23:02:09.456527,database-worker,INFO,User logout success
-2025-12-06T23:02:12.914914,auth-service,INFO,Session refreshed
-2025-12-06T23:02:17.474332,database-worker,INFO,Session refreshed
-2025-12-06T23:02:23.309108,database-worker,INFO,Page load complete
-2025-12-06T23:02:27.929534,frontend-ui,INFO,User action processed successfully
-2025-12-06T23:02:32.549014,database-worker,INFO,Page load complete
-2025-12-06T23:02:37.126964,frontend-ui,INFO,Page load complete
-2025-12-06T23:02:42.082826,auth-service,INFO,Session refreshed
-2025-12-06T23:02:47.029775,frontend-ui,INFO,Payment verified
-2025-12-06T23:02:51.834760,database-worker,INFO,Health check OK
-2025-12-06T23:02:57.908111,database-worker,INFO,Health check OK
-2025-12-06T23:03:01.363313,database-worker,INFO,Payment verified
-2025-12-06T23:03:06.615581,payment-api,INFO,Health check OK
-2025-12-06T23:03:10.719635,frontend-ui,INFO,Health check OK
-2025-12-06T23:03:15.388144,frontend-ui,INFO,User action processed successfully
-2025-12-06T23:03:20.415959,payment-api,INFO,Health check OK
-2025-12-06T23:03:24.002228,payment-api,INFO,Database sync finished
-2025-12-06T23:03:30.101779,frontend-ui,INFO,Payment verified
-2025-12-06T23:03:35.493779,frontend-ui,INFO,User action processed successfully
-2025-12-06T23:03:39.207938,auth-service,INFO,Health check OK
-2025-12-06T23:03:42.645022,auth-service,INFO,User action processed successfully
-2025-12-06T23:03:45.209864,database-worker,INFO,Session refreshed
-2025-12-06T23:03:47.420100,payment-api,INFO,Health check OK
-2025-12-06T23:03:50.151705,frontend-ui,INFO,Health check OK
-2025-12-06T23:03:53.064914,payment-api,INFO,Page load complete
-2025-12-06T23:03:55.340201,payment-api,INFO,Database sync finished
-2025-12-06T23:03:57.242629,payment-api,INFO,Database sync finished
-2025-12-06T23:04:00.662297,payment-api,INFO,Payment verified
-2025-12-06T23:04:03.682038,auth-service,INFO,User action processed successfully
-2025-12-06T23:04:05.865673,database-worker,INFO,Database sync finished
-2025-12-06T23:04:08.056797,auth-service,INFO,Database sync finished
-2025-12-06T23:04:10.489670,database-worker,INFO,Session refreshed
-2025-12-06T23:04:12.859220,frontend-ui,INFO,User action processed successfully
-2025-12-06T23:04:16.096651,database-worker,INFO,Payment verified
-2025-12-06T23:04:17.464858,frontend-ui,INFO,Payment verified
-2025-12-06T23:04:20.384254,auth-service,INFO,Page load complete
-2025-12-06T23:04:22.874190,frontend-ui,INFO,Page load complete
-2025-12-06T23:04:24.441435,frontend-ui,INFO,Health check OK
-2025-12-06T23:04:26.749348,payment-api,INFO,Health check OK
-2025-12-06T23:04:31.421630,database-worker,INFO,Health check OK
-2025-12-06T23:04:34.091686,frontend-ui,INFO,User action processed successfully
-2025-12-06T23:04:36.336062,frontend-ui,INFO,Health check OK
-2025-12-06T23:04:37.605746,auth-service,INFO,User logout success
-2025-12-06T23:04:41.247660,frontend-ui,INFO,Session refreshed
-2025-12-06T23:04:42.427346,database-worker,INFO,Payment verified
-2025-12-06T23:04:44.844828,payment-api,INFO,User logout success
-2025-12-06T23:04:47.167348,frontend-ui,INFO,Health check OK
-2025-12-06T23:04:50.155293,database-worker,INFO,User action processed successfully
-2025-12-06T23:04:53.143654,payment-api,INFO,Session refreshed
-2025-12-06T23:04:54.460746,frontend-ui,INFO,Health check OK
-2025-12-06T23:04:57.748756,payment-api,INFO,Page load complete
-2025-12-06T23:04:59.785869,auth-service,INFO,Database sync finished
-2025-12-06T23:05:03.399559,auth-service,INFO,Health check OK
-2025-12-06T23:05:05.234371,frontend-ui,INFO,Session refreshed
-2025-12-06T23:05:08.493821,payment-api,INFO,Payment verified
-2025-12-06T23:05:10.821326,frontend-ui,INFO,Health check OK
-2025-12-06T23:05:12.735259,payment-api,INFO,Payment verified
-2025-12-06T23:05:16.296365,auth-service,INFO,User action processed successfully
-2025-12-06T23:05:18.269996,database-worker,INFO,User logout success
-2025-12-06T23:05:20.859949,database-worker,INFO,Page load complete
-2025-12-06T23:05:22.869264,frontend-ui,INFO,User action processed successfully
-2025-12-06T23:05:24.760529,payment-api,INFO,Page load complete
-2025-12-06T23:05:28.043356,frontend-ui,INFO,Payment verified
-2025-12-06T23:05:29.887495,database-worker,INFO,Page load complete
-2025-12-06T23:05:34.038270,database-worker,INFO,User action processed successfully
-2025-12-06T23:05:35.979711,frontend-ui,INFO,Page load complete
-2025-12-06T23:05:38.544846,auth-service,INFO,Page load complete
-2025-12-06T23:05:41.632458,payment-api,INFO,Session refreshed
-2025-12-06T23:05:42.657172,auth-service,INFO,User logout success
-2025-12-06T23:05:46.249097,auth-service,INFO,Page load complete
-2025-12-06T23:05:48.732364,frontend-ui,INFO,Page load complete
-2025-12-06T23:05:49.830640,frontend-ui,INFO,Session refreshed
-2025-12-06T23:05:53.129660,payment-api,INFO,Payment verified
-2025-12-06T23:05:55.783450,payment-api,INFO,Payment verified
-2025-12-06T23:05:58.123233,database-worker,INFO,Page load complete
-2025-12-06T23:06:00.360342,payment-api,INFO,User action processed successfully
-2025-12-06T23:06:02.555220,database-worker,INFO,User logout success
-2025-12-06T23:06:05.994050,payment-api,INFO,Page load complete
-2025-12-06T23:06:08.172057,payment-api,INFO,Payment verified
-2025-12-06T23:06:11.137921,auth-service,INFO,Health check OK
-2025-12-06T23:06:13.803656,frontend-ui,INFO,Database sync finished
-2025-12-06T23:06:16.075055,frontend-ui,INFO,User logout success
-2025-12-06T23:06:17.711726,payment-api,INFO,Page load complete
-2025-12-06T23:06:20.434647,database-worker,INFO,User logout success
-2025-12-06T23:06:22.868371,frontend-ui,INFO,Health check OK
-2025-12-06T23:06:25.601751,auth-service,INFO,Session refreshed
-2025-12-06T23:06:28.147570,frontend-ui,INFO,Session refreshed
-2025-12-06T23:06:30.464836,payment-api,INFO,Session refreshed
-2025-12-06T23:06:32.459010,database-worker,INFO,Session refreshed
-2025-12-06T23:06:36.103437,database-worker,INFO,Health check OK
-2025-12-06T23:06:39.476763,payment-api,INFO,User logout success
-2025-12-06T23:06:41.116342,database-worker,INFO,User logout success
-2025-12-06T23:06:43.410751,database-worker,INFO,Session refreshed
-2025-12-06T23:06:45.474983,auth-service,INFO,Page load complete
-2025-12-06T23:06:47.847455,frontend-ui,INFO,Database sync finished
-2025-12-06T23:06:50.530296,database-worker,INFO,User logout success
-2025-12-06T23:06:53.012478,frontend-ui,INFO,Session refreshed
-2025-12-06T23:06:56.060413,payment-api,INFO,User logout success
-2025-12-06T23:06:57.769856,database-worker,INFO,User logout success
-2025-12-06T23:07:00.342270,payment-api,INFO,User action processed successfully
-2025-12-06T23:07:02.466277,database-worker,INFO,Health check OK
-2025-12-06T23:07:05.092121,auth-service,INFO,Page load complete
-2025-12-06T23:07:08.659467,database-worker,INFO,User logout success
-2025-12-06T23:07:11.321616,payment-api,INFO,User logout success
-2025-12-06T23:07:14.494073,database-worker,INFO,User logout success
-2025-12-06T23:07:16.944692,auth-service,INFO,Page load complete
-2025-12-06T23:07:17.885907,database-worker,INFO,User action processed successfully
-2025-12-06T23:07:21.375968,frontend-ui,INFO,Session refreshed
-2025-12-06T23:07:23.385802,database-worker,INFO,User logout success
-2025-12-06T23:07:25.443937,payment-api,INFO,Payment verified
-2025-12-06T23:07:27.697084,database-worker,INFO,Payment verified
-2025-12-06T23:07:29.754532,frontend-ui,INFO,User logout success
-2025-12-06T23:07:32.155280,database-worker,INFO,Database sync finished
-2025-12-06T23:07:34.602885,auth-service,INFO,User logout success
-2025-12-06T23:07:37.244330,frontend-ui,INFO,User logout success
+timestamp,service,level,message,endpoint,status_code,user_agent,client_ip
+2026-09-17T15:10:26.787453,payment-api,INFO,Database sync finished,/,200,unknown,192.168.1.172
+2026-09-17T15:10:28.855547,auth-service,INFO,Payment verified,/,200,unknown,192.168.1.122
+2026-09-17T15:10:30.136798,frontend-ui,INFO,Database sync finished,/,200,unknown,192.168.1.198
+2026-09-17T15:10:31.854200,auth-service,INFO,User logout success,/,200,unknown,192.168.1.150
+2026-09-17T15:10:33.373167,auth-service,INFO,User logout success,/,200,unknown,192.168.1.196
+2026-09-17T15:10:34.432969,frontend-ui,INFO,Database sync finished,/,200,unknown,192.168.1.13
+2026-09-17T15:10:36.525111,frontend-ui,INFO,Health check OK,/,200,unknown,192.168.1.235
+2026-09-17T15:10:38.654021,payment-api,INFO,Payment verified,/,200,unknown,192.168.1.189
+2026-09-17T15:10:39.788273,payment-api,INFO,Health check OK,/,200,unknown,192.168.1.211
+2026-09-17T15:10:41.564594,auth-service,INFO,Database sync finished,/,200,unknown,192.168.1.126
+2026-09-17T15:10:42.416922,payment-api,INFO,Health check OK,/,200,unknown,192.168.1.126
+2026-09-17T15:10:44.335317,auth-service,INFO,Payment verified,/,200,unknown,192.168.1.221
+2026-09-17T15:10:46.069872,payment-api,INFO,Health check OK,/,200,unknown,192.168.1.71
+2026-09-17T15:10:46.841931,auth-service,INFO,Payment verified,/,200,unknown,192.168.1.154
+2026-09-17T15:10:48.827066,database-worker,INFO,Page load complete,/,200,unknown,192.168.1.240
+2026-09-17T15:10:52.904486,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.202
+2026-09-17T15:10:54.782903,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.3
+2026-09-17T15:10:56.054771,database-worker,INFO,Database sync finished,/,200,unknown,192.168.1.17
+2026-09-17T15:10:56.883887,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.253
+2026-09-17T15:10:58.112701,frontend-ui,INFO,Database sync finished,/,200,unknown,192.168.1.56
+2026-09-17T15:10:59.965824,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.90
+2026-09-17T15:11:00.634305,database-worker,INFO,Session refreshed,/,200,unknown,192.168.1.241
+2026-09-17T15:11:02.166927,frontend-ui,INFO,Page load complete,/,200,unknown,192.168.1.155
+2026-09-17T15:11:03.605641,frontend-ui,INFO,Page load complete,/,200,unknown,192.168.1.84
+2026-09-17T15:11:05.295503,frontend-ui,INFO,Session refreshed,/,200,unknown,192.168.1.224
+2026-09-17T15:11:06.587165,payment-api,INFO,Health check OK,/,200,unknown,192.168.1.126
+2026-09-17T15:11:07.953655,database-worker,INFO,Database sync finished,/,200,unknown,192.168.1.135
+2026-09-17T15:11:09.964661,frontend-ui,INFO,Health check OK,/,200,unknown,192.168.1.251
+2026-09-17T15:11:11.426412,auth-service,INFO,Database sync finished,/,200,unknown,192.168.1.68
+2026-09-17T15:11:13.022760,payment-api,INFO,Database sync finished,/,200,unknown,192.168.1.195
+2026-09-17T15:11:15.036495,database-worker,INFO,Health check OK,/,200,unknown,192.168.1.172
+2026-09-17T15:11:16.876877,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.226
+2026-09-17T15:11:18.918775,frontend-ui,INFO,Payment verified,/,200,unknown,192.168.1.5
+2026-09-17T15:11:19.966658,database-worker,INFO,Page load complete,/,200,unknown,192.168.1.84
+2026-09-17T15:11:21.825375,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.77
+2026-09-17T15:11:26.130351,auth-service,INFO,Database sync finished,/,200,unknown,192.168.1.128
+2026-09-17T15:11:26.887712,payment-api,INFO,User logout success,/,200,unknown,192.168.1.179
+2026-09-17T15:11:28.450973,auth-service,INFO,Payment verified,/,200,unknown,192.168.1.41
+2026-09-17T15:11:30.214610,database-worker,INFO,User logout success,/,200,unknown,192.168.1.165
+2026-09-17T15:11:31.228022,payment-api,INFO,Health check OK,/,200,unknown,192.168.1.239
+2026-09-17T15:11:32.220706,database-worker,INFO,User logout success,/,200,unknown,192.168.1.142
+2026-09-17T15:11:35.509094,database-worker,INFO,User action processed,/,200,unknown,192.168.1.172
+2026-09-17T15:11:38.012560,database-worker,INFO,Health check OK,/,200,unknown,192.168.1.231
+2026-09-17T15:11:38.988874,frontend-ui,INFO,Session refreshed,/,200,unknown,192.168.1.229
+2026-09-17T15:11:42.380083,frontend-ui,INFO,Health check OK,/,200,unknown,192.168.1.225
+2026-09-17T15:11:44.865603,payment-api,INFO,Session refreshed,/,200,unknown,192.168.1.43
+2026-09-17T15:11:46.486196,auth-service,INFO,Health check OK,/,200,unknown,192.168.1.164
+2026-09-17T15:11:49.672810,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.178
+2026-09-17T15:11:51.456554,auth-service,INFO,Health check OK,/,200,unknown,192.168.1.118
+2026-09-17T15:11:53.664705,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.103
+2026-09-17T15:11:58.013022,frontend-ui,INFO,Session refreshed,/,200,unknown,192.168.1.214
+2026-09-17T15:12:00.741803,database-worker,INFO,Session refreshed,/,200,unknown,192.168.1.131
+2026-09-17T15:12:03.157555,payment-api,INFO,Payment verified,/,200,unknown,192.168.1.66
+2026-09-17T15:12:04.757385,frontend-ui,INFO,Payment verified,/,200,unknown,192.168.1.131
+2026-09-17T15:12:08.018768,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.176
+2026-09-17T15:12:09.996826,payment-api,INFO,User logout success,/,200,unknown,192.168.1.112
+2026-09-17T15:12:11.640882,auth-service,INFO,Database sync finished,/,200,unknown,192.168.1.48
+2026-09-17T15:12:14.905218,auth-service,INFO,User logout success,/,200,unknown,192.168.1.184
+2026-09-17T15:12:16.972688,database-worker,INFO,User logout success,/,200,unknown,192.168.1.196
+2026-09-17T15:12:18.334593,frontend-ui,INFO,Session refreshed,/,200,unknown,192.168.1.252
+2026-09-17T15:12:21.823485,payment-api,INFO,Database sync finished,/,200,unknown,192.168.1.150
+2026-09-17T15:12:23.718974,frontend-ui,INFO,Health check OK,/,200,unknown,192.168.1.251
+2026-09-17T15:12:25.794418,payment-api,INFO,Payment verified,/,200,unknown,192.168.1.212
+2026-09-17T15:12:30.713234,frontend-ui,INFO,Payment verified,/,200,unknown,192.168.1.170
+2026-09-17T15:12:33.707324,frontend-ui,INFO,Health check OK,/,200,unknown,192.168.1.77
+2026-09-17T15:12:35.506565,database-worker,INFO,User logout success,/,200,unknown,192.168.1.106
+2026-09-17T15:12:37.945267,payment-api,INFO,Payment verified,/,200,unknown,192.168.1.61
+2026-09-17T15:12:40.368510,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.244
+2026-09-17T15:12:42.713770,auth-service,INFO,Payment verified,/,200,unknown,192.168.1.4
+2026-09-17T15:12:45.046505,auth-service,INFO,Payment verified,/,200,unknown,192.168.1.27
+2026-09-17T15:12:46.694613,payment-api,INFO,User logout success,/,200,unknown,192.168.1.99
+2026-09-17T15:12:48.610132,payment-api,INFO,Payment verified,/,200,unknown,192.168.1.246
+2026-09-17T15:12:51.644006,auth-service,INFO,Health check OK,/,200,unknown,192.168.1.126
+2026-09-17T15:12:53.753107,auth-service,INFO,Page load complete,/,200,unknown,192.168.1.118
+2026-09-17T15:12:55.854061,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.91
+2026-09-17T15:12:58.146881,payment-api,INFO,Health check OK,/,200,unknown,192.168.1.199
+2026-09-17T15:13:03.273916,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.8
+2026-09-17T15:13:04.862917,auth-service,INFO,User logout success,/,200,unknown,192.168.1.12
+2026-09-17T15:13:08.038299,database-worker,INFO,User action processed,/,200,unknown,192.168.1.113
+2026-09-17T15:13:10.148929,auth-service,INFO,User action processed,/,200,unknown,192.168.1.198
+2026-09-17T15:13:12.043201,frontend-ui,INFO,Session refreshed,/,200,unknown,192.168.1.42
+2026-09-17T15:13:14.648815,database-worker,INFO,Session refreshed,/,200,unknown,192.168.1.133
+2026-09-17T15:13:17.575915,frontend-ui,INFO,Session refreshed,/,200,unknown,192.168.1.224
+2026-09-17T15:13:18.817072,payment-api,INFO,Session refreshed,/,200,unknown,192.168.1.105
+2026-09-17T15:13:21.937526,payment-api,INFO,Database sync finished,/,200,unknown,192.168.1.66
+2026-09-17T15:13:24.032728,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.157
+2026-09-17T15:13:26.257594,payment-api,INFO,Database sync finished,/,200,unknown,192.168.1.12
+2026-09-17T15:13:29.091156,database-worker,INFO,Page load complete,/,200,unknown,192.168.1.183
+2026-09-17T15:13:30.549486,auth-service,INFO,User logout success,/,200,unknown,192.168.1.32
+2026-09-17T15:13:35.145737,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.190
+2026-09-17T15:13:37.261349,frontend-ui,INFO,Health check OK,/,200,unknown,192.168.1.144
+2026-09-17T15:13:40.630036,database-worker,INFO,Health check OK,/,200,unknown,192.168.1.93
+2026-09-17T15:13:42.182610,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.46
+2026-09-17T15:13:45.585102,database-worker,INFO,User logout success,/,200,unknown,192.168.1.255
+2026-09-17T15:13:47.622158,database-worker,INFO,Session refreshed,/,200,unknown,192.168.1.166
+2026-09-17T15:13:49.788667,database-worker,INFO,Session refreshed,/,200,unknown,192.168.1.249
+2026-09-17T15:13:52.033869,frontend-ui,INFO,Database sync finished,/,200,unknown,192.168.1.113
+2026-09-17T15:13:54.736275,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.78
+2026-09-17T15:13:57.127104,database-worker,INFO,User action processed,/,200,unknown,192.168.1.223
+2026-09-17T15:13:58.797601,frontend-ui,INFO,Session refreshed,/,200,unknown,192.168.1.248
+2026-09-17T15:14:00.996697,payment-api,INFO,Payment verified,/,200,unknown,192.168.1.181
+2026-09-17T15:14:05.373740,auth-service,INFO,User logout success,/,200,unknown,192.168.1.18
+2026-09-17T15:14:07.574649,database-worker,INFO,Page load complete,/,200,unknown,192.168.1.75
+2026-09-17T15:14:10.442264,payment-api,INFO,Session refreshed,/,200,unknown,192.168.1.136
+2026-09-17T15:14:12.914067,database-worker,INFO,Payment verified,/,200,unknown,192.168.1.193
+2026-09-17T15:14:14.478681,auth-service,INFO,User action processed,/,200,unknown,192.168.1.15
+2026-09-17T15:14:18.060201,database-worker,INFO,User action processed,/,200,unknown,192.168.1.75
+2026-09-17T15:14:19.245159,database-worker,INFO,Health check OK,/,200,unknown,192.168.1.183
+2026-09-17T15:14:22.485204,payment-api,INFO,Payment verified,/,200,unknown,192.168.1.82
+2026-09-17T15:14:23.647970,frontend-ui,INFO,Session refreshed,/,200,unknown,192.168.1.129
+2026-09-17T15:14:27.177029,database-worker,INFO,Session refreshed,/,200,unknown,192.168.1.138
+2026-09-17T15:14:29.449416,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.111
+2026-09-17T15:14:31.824621,payment-api,INFO,Database sync finished,/,200,unknown,192.168.1.132
+2026-09-17T15:14:33.767779,auth-service,INFO,User action processed,/,200,unknown,192.168.1.227
+2026-09-17T15:14:36.268888,frontend-ui,INFO,Health check OK,/,200,unknown,192.168.1.177
+2026-09-17T15:14:38.882142,auth-service,INFO,Payment verified,/,200,unknown,192.168.1.166
+2026-09-17T15:14:41.179738,payment-api,INFO,Health check OK,/,200,unknown,192.168.1.103
+2026-09-17T15:14:44.066554,payment-api,INFO,Database sync finished,/,200,unknown,192.168.1.200
+2026-09-17T15:14:46.483774,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.254
+2026-09-17T15:14:48.060779,database-worker,INFO,Page load complete,/,200,unknown,192.168.1.88
+2026-09-17T15:14:50.395816,frontend-ui,INFO,User logout success,/,200,unknown,192.168.1.19
+2026-09-17T15:14:56.167357,auth-service,INFO,Health check OK,/,200,unknown,192.168.1.202
+2026-09-17T15:15:00.174729,database-worker,INFO,User action processed,/,200,unknown,192.168.1.220
+2026-09-17T15:15:04.667552,database-worker,INFO,User action processed,/,200,unknown,192.168.1.201
+2026-09-17T15:15:10.498611,database-worker,INFO,Health check OK,/,200,unknown,192.168.1.17
+2026-09-17T15:15:15.234980,payment-api,INFO,User action processed,/,200,unknown,192.168.1.24
+2026-09-17T15:15:18.745265,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.212
+2026-09-17T15:15:22.736425,payment-api,INFO,Database sync finished,/,200,unknown,192.168.1.106
+2026-09-17T15:15:27.803249,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.45
+2026-09-17T15:15:32.440115,database-worker,INFO,User action processed,/,200,unknown,192.168.1.158
+2026-09-17T15:15:36.672398,auth-service,INFO,User logout success,/,200,unknown,192.168.1.231
+2026-09-17T15:15:43.932618,database-worker,INFO,Page load complete,/,200,unknown,192.168.1.57
+2026-09-17T15:15:47.701051,payment-api,INFO,User logout success,/,200,unknown,192.168.1.233
+2026-09-17T15:15:53.269047,frontend-ui,INFO,Payment verified,/,200,unknown,192.168.1.243
+2026-09-17T15:15:56.588572,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.195
+2026-09-17T15:16:01.970622,auth-service,INFO,Database sync finished,/,200,unknown,192.168.1.32
+2026-09-17T15:16:05.104562,frontend-ui,INFO,Payment verified,/,200,unknown,192.168.1.6
+2026-09-17T15:16:09.423829,frontend-ui,INFO,User logout success,/,200,unknown,192.168.1.52
+2026-09-17T15:16:16.587658,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.168
+2026-09-17T15:16:20.913300,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.130
+2026-09-17T15:16:26.620373,auth-service,INFO,User action processed,/,200,unknown,192.168.1.19
+2026-09-17T15:16:30.900231,payment-api,INFO,Payment verified,/,200,unknown,192.168.1.52
+2026-09-17T15:16:33.270806,auth-service,INFO,User logout success,/,200,unknown,192.168.1.165
+2026-09-17T15:16:35.336037,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.164
+2026-09-17T15:16:37.977092,database-worker,INFO,Payment verified,/,200,unknown,192.168.1.139
+2026-09-17T15:16:41.010580,payment-api,INFO,User logout success,/,200,unknown,192.168.1.106
+2026-09-17T15:16:43.001578,frontend-ui,INFO,Payment verified,/,200,unknown,192.168.1.37
+2026-09-17T15:16:47.552765,payment-api,INFO,Session refreshed,/,200,unknown,192.168.1.194
+2026-09-17T15:16:49.091694,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.190
+2026-09-17T15:16:53.353515,frontend-ui,INFO,Page load complete,/,200,unknown,192.168.1.23
+2026-09-17T15:16:58.921756,payment-api,INFO,User logout success,/,200,unknown,192.168.1.140
+2026-09-17T15:17:02.851598,payment-api,INFO,User logout success,/,200,unknown,192.168.1.205
+2026-09-17T15:17:07.890874,payment-api,INFO,Session refreshed,/,200,unknown,192.168.1.27
+2026-09-17T15:17:11.448607,database-worker,INFO,Database sync finished,/,200,unknown,192.168.1.111
+2026-09-17T15:17:15.964189,frontend-ui,INFO,Page load complete,/,200,unknown,192.168.1.200
+2026-09-17T15:17:23.111269,database-worker,INFO,User logout success,/,200,unknown,192.168.1.162
+2026-09-17T15:17:28.179593,auth-service,INFO,Health check OK,/,200,unknown,192.168.1.215
+2026-09-17T15:17:32.789542,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.210
+2026-09-17T15:17:36.121589,payment-api,INFO,Session refreshed,/,200,unknown,192.168.1.232
+2026-09-17T15:17:41.294970,frontend-ui,INFO,Database sync finished,/,200,unknown,192.168.1.127
+2026-09-17T15:17:45.231472,database-worker,INFO,Page load complete,/,200,unknown,192.168.1.248
+2026-09-17T15:17:51.485531,database-worker,INFO,Payment verified,/,200,unknown,192.168.1.168
+2026-09-17T15:17:56.068190,database-worker,INFO,User logout success,/,200,unknown,192.168.1.238
+2026-09-17T15:18:01.910597,frontend-ui,INFO,Health check OK,/,200,unknown,192.168.1.11
+2026-09-17T15:18:05.100179,auth-service,INFO,User logout success,/,200,unknown,192.168.1.182
+2026-09-17T15:18:10.460857,frontend-ui,INFO,Health check OK,/,200,unknown,192.168.1.193
+2026-09-17T15:18:14.806376,auth-service,INFO,Database sync finished,/,200,unknown,192.168.1.17
+2026-09-17T15:18:19.042915,payment-api,INFO,Payment verified,/,200,unknown,192.168.1.127
+2026-09-17T15:18:25.240616,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.123
+2026-09-17T15:18:28.576832,payment-api,INFO,Session refreshed,/,200,unknown,192.168.1.13
+2026-09-17T15:18:31.250099,payment-api,INFO,User action processed,/,200,unknown,192.168.1.41
+2026-09-17T15:18:33.990064,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.208
+2026-09-17T15:18:36.238651,auth-service,INFO,User logout success,/,200,unknown,192.168.1.222
+2026-09-17T15:18:37.867356,database-worker,INFO,Payment verified,/,200,unknown,192.168.1.153
+2026-09-17T15:18:39.912213,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.248
+2026-09-17T15:18:42.298786,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.223
+2026-09-17T15:18:44.334045,frontend-ui,INFO,User logout success,/,200,unknown,192.168.1.203
+2026-09-17T15:18:47.323956,payment-api,INFO,Health check OK,/,200,unknown,192.168.1.152
+2026-09-17T15:18:49.706572,database-worker,INFO,Session refreshed,/,200,unknown,192.168.1.150
+2026-09-17T15:18:51.398380,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.104
+2026-09-17T15:18:56.400998,database-worker,INFO,Session refreshed,/,200,unknown,192.168.1.102
+2026-09-17T15:18:59.045722,database-worker,INFO,User logout success,/,200,unknown,192.168.1.203
+2026-09-17T15:19:01.163440,database-worker,INFO,Session refreshed,/,200,unknown,192.168.1.102
+2026-09-17T15:19:02.847159,auth-service,INFO,Page load complete,/,200,unknown,192.168.1.168
+2026-09-17T15:19:05.660084,frontend-ui,INFO,Session refreshed,/,200,unknown,192.168.1.46
+2026-09-17T15:19:07.801907,database-worker,INFO,Payment verified,/,200,unknown,192.168.1.4
+2026-09-17T15:19:09.887888,auth-service,INFO,User action processed,/,200,unknown,192.168.1.253
+2026-09-17T15:19:13.181727,frontend-ui,INFO,Session refreshed,/,200,unknown,192.168.1.2
+2026-09-17T15:19:15.682685,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.156
+2026-09-17T15:19:17.009675,auth-service,INFO,Health check OK,/,200,unknown,192.168.1.125
+2026-09-17T15:19:20.074425,auth-service,INFO,Database sync finished,/,200,unknown,192.168.1.1
+2026-09-17T15:19:22.482392,auth-service,INFO,Page load complete,/,200,unknown,192.168.1.27
+2026-09-17T15:19:24.380846,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.223
+2026-09-17T15:19:29.471631,payment-api,INFO,User logout success,/,200,unknown,192.168.1.130
+2026-09-17T15:19:31.054021,auth-service,INFO,Page load complete,/,200,unknown,192.168.1.202
+2026-09-17T15:19:33.420964,auth-service,INFO,User logout success,/,200,unknown,192.168.1.60
+2026-09-17T15:19:35.611526,auth-service,INFO,Health check OK,/,200,unknown,192.168.1.121
+2026-09-17T15:19:38.771194,payment-api,INFO,Session refreshed,/,200,unknown,192.168.1.196
+2026-09-17T15:19:41.281786,auth-service,INFO,Payment verified,/,200,unknown,192.168.1.209
+2026-09-17T15:19:43.412128,frontend-ui,INFO,Payment verified,/,200,unknown,192.168.1.237
+2026-09-17T15:19:46.006605,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.239
+2026-09-17T15:19:47.279623,auth-service,INFO,Health check OK,/,200,unknown,192.168.1.187
+2026-09-17T15:19:49.834605,payment-api,INFO,User action processed,/,200,unknown,192.168.1.92
+2026-09-17T15:19:52.851616,payment-api,INFO,User logout success,/,200,unknown,192.168.1.14
+2026-09-17T15:19:54.664259,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.228
+2026-09-17T15:19:56.387632,database-worker,INFO,User logout success,/,200,unknown,192.168.1.122
+2026-09-17T15:20:01.460875,frontend-ui,INFO,Page load complete,/,200,unknown,192.168.1.154
+2026-09-17T15:20:03.459942,payment-api,INFO,Payment verified,/,200,unknown,192.168.1.54
+2026-09-17T15:20:06.100335,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.14
+2026-09-17T15:20:08.574532,auth-service,INFO,Payment verified,/,200,unknown,192.168.1.144
+2026-09-17T15:20:10.888650,database-worker,INFO,Database sync finished,/,200,unknown,192.168.1.86
+2026-09-17T15:20:12.950334,payment-api,INFO,Session refreshed,/,200,unknown,192.168.1.27
+2026-09-17T15:20:15.623503,auth-service,INFO,Payment verified,/,200,unknown,192.168.1.196
+2026-09-17T15:20:17.427102,database-worker,INFO,Database sync finished,/,200,unknown,192.168.1.152
+2026-09-17T15:20:20.443689,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.82
+2026-09-17T15:20:22.921818,frontend-ui,INFO,Database sync finished,/,200,unknown,192.168.1.254
+2026-09-17T15:20:25.235568,payment-api,INFO,Health check OK,/,200,unknown,192.168.1.2
+2026-09-17T15:20:26.740846,auth-service,INFO,Page load complete,/,200,unknown,192.168.1.78
+2026-09-17T15:20:29.524808,database-worker,INFO,Health check OK,/,200,unknown,192.168.1.54
+2026-09-17T15:20:33.680705,frontend-ui,INFO,Health check OK,/,200,unknown,192.168.1.205
+2026-09-17T15:20:35.877056,frontend-ui,INFO,Database sync finished,/,200,unknown,192.168.1.171
+2026-09-17T15:20:39.255277,frontend-ui,INFO,Payment verified,/,200,unknown,192.168.1.77
+2026-09-17T15:20:41.754234,database-worker,INFO,User action processed,/,200,unknown,192.168.1.253
+2026-09-17T15:20:44.327219,auth-service,INFO,Database sync finished,/,200,unknown,192.168.1.6
+2026-09-17T15:20:45.539181,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.157
+2026-09-17T15:20:48.889219,database-worker,INFO,Payment verified,/,200,unknown,192.168.1.239
+2026-09-17T15:20:50.350612,payment-api,INFO,Session refreshed,/,200,unknown,192.168.1.41
+2026-09-17T15:20:52.563828,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.164
+2026-09-17T15:20:55.196533,frontend-ui,INFO,Payment verified,/,200,unknown,192.168.1.51
+2026-09-17T15:20:57.704350,payment-api,INFO,Payment verified,/,200,unknown,192.168.1.5
+2026-09-17T15:21:00.096330,database-worker,INFO,User logout success,/,200,unknown,192.168.1.3
+2026-09-17T15:21:01.556849,database-worker,INFO,Payment verified,/,200,unknown,192.168.1.24
+2026-09-17T15:21:05.886131,frontend-ui,INFO,Database sync finished,/,200,unknown,192.168.1.239
+2026-09-17T15:21:08.457471,database-worker,INFO,Health check OK,/,200,unknown,192.168.1.48
+2026-09-17T15:21:10.662936,auth-service,INFO,User action processed,/,200,unknown,192.168.1.225
+2026-09-17T15:21:14.465154,frontend-ui,INFO,User action processed,/,200,unknown,192.168.1.39
+2026-09-17T15:21:16.679129,frontend-ui,INFO,Database sync finished,/,200,unknown,192.168.1.50
+2026-09-17T15:21:18.254920,payment-api,INFO,User logout success,/,200,unknown,192.168.1.159
+2026-09-17T15:21:21.315708,auth-service,INFO,Database sync finished,/,200,unknown,192.168.1.97
+2026-09-17T15:21:23.914239,database-worker,INFO,Session refreshed,/,200,unknown,192.168.1.142
+2026-09-17T15:21:25.315124,database-worker,INFO,Page load complete,/,200,unknown,192.168.1.36
+2026-09-17T15:21:28.250864,frontend-ui,INFO,Session refreshed,/,200,unknown,192.168.1.198
+2026-09-17T15:21:30.776808,frontend-ui,INFO,Database sync finished,/,200,unknown,192.168.1.66
+2026-09-17T15:21:32.539979,payment-api,INFO,User action processed,/,200,unknown,192.168.1.21
+2026-09-17T15:21:36.819792,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.207
+2026-09-17T15:21:38.428802,payment-api,INFO,Session refreshed,/,200,unknown,192.168.1.43
+2026-09-17T15:21:41.461774,frontend-ui,INFO,Page load complete,/,200,unknown,192.168.1.154
+2026-09-17T15:21:43.101146,auth-service,INFO,Page load complete,/,200,unknown,192.168.1.243
+2026-09-17T15:21:45.392803,payment-api,INFO,Health check OK,/,200,unknown,192.168.1.69
+2026-09-17T15:21:48.366428,frontend-ui,INFO,User logout success,/,200,unknown,192.168.1.135
+2026-09-17T15:21:50.253777,frontend-ui,INFO,Database sync finished,/,200,unknown,192.168.1.86
+2026-09-17T15:21:52.862691,frontend-ui,INFO,Health check OK,/,200,unknown,192.168.1.229
+2026-09-17T15:21:55.117677,frontend-ui,INFO,Payment verified,/,200,unknown,192.168.1.66
+2026-09-17T15:21:57.208610,auth-service,INFO,Health check OK,/,200,unknown,192.168.1.151
+2026-09-17T15:21:59.419704,auth-service,INFO,Payment verified,/,200,unknown,192.168.1.236
+2026-09-17T15:22:01.775809,database-worker,INFO,Session refreshed,/,200,unknown,192.168.1.59
+2026-09-17T15:22:04.195832,auth-service,INFO,Health check OK,/,200,unknown,192.168.1.94
+2026-09-17T15:22:06.553572,auth-service,INFO,User logout success,/,200,unknown,192.168.1.154
+2026-09-17T15:22:11.959740,database-worker,INFO,User action processed,/,200,unknown,192.168.1.209
+2026-09-17T15:22:13.652863,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.146
+2026-09-17T15:22:16.446651,database-worker,INFO,Payment verified,/,200,unknown,192.168.1.131
+2026-09-17T15:22:18.987687,payment-api,INFO,Page load complete,/,200,unknown,192.168.1.209
+2026-09-17T15:22:21.288275,frontend-ui,INFO,Page load complete,/,200,unknown,192.168.1.144
+2026-09-17T15:22:22.630382,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.230
+2026-09-17T15:22:26.298545,database-worker,INFO,Health check OK,/,200,unknown,192.168.1.210
+2026-09-17T15:22:27.865521,auth-service,INFO,Health check OK,/,200,unknown,192.168.1.74
+2026-09-17T15:22:30.911596,auth-service,INFO,Database sync finished,/,200,unknown,192.168.1.160
+2026-09-17T15:22:31.974092,auth-service,INFO,User action processed,/,200,unknown,192.168.1.208
+2026-09-17T15:22:34.356070,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.243
+2026-09-17T15:22:36.668054,database-worker,INFO,Health check OK,/,200,unknown,192.168.1.65
+2026-09-17T15:22:42.239070,auth-service,INFO,Health check OK,/,200,unknown,192.168.1.221
+2026-09-17T15:22:44.984449,auth-service,INFO,Session refreshed,/,200,unknown,192.168.1.207
+2026-09-17T15:22:46.975462,frontend-ui,INFO,User logout success,/,200,unknown,192.168.1.29
+2026-09-17T15:22:48.743558,database-worker,INFO,Database sync finished,/,200,unknown,192.168.1.40
